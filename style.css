@@ -1,0 +1,27 @@
+body {
+  background-color: lightblue;
+}
+
+.container {
+  background-color: white;
+  height: 50vh;
+  width: 60vw;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.restaurants {
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: lightgrey;
+  margin-bottom: 3%;
+}
+
+h2 {
+  text-align: center;
+}
