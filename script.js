@@ -34,6 +34,12 @@ $.ajax({
  var title = movies.results[randomMovie].title //For title
  var synops = movies.results[randomMovie].overview //For Synopsys
  var voterRate = movies.results[randomMovie].vote_average // For voteer rating
+
+ $(".movie").text("Title: " + title)
+ $(".movie").append('<img src="https://image.tmdb.org/t/p/w500/bqS2lMgGkuodIXtDILFWTSWDDpa.jpg" height="120vw" width="60vw">')
+ $(".movie").append(synops)
+ $(".movie").append("Stars: " + voterRate)
+ 
  
  ///calls streem function with movieId as variable
 streem(movieId)
