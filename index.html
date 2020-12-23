@@ -3,29 +3,115 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!--Jquery link-->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
+    <title>Shake n' Date</title>
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Header -->
     <div class="header">
-      <h1>Shake n' Date</h1>
+      <p id="page-title">Shake n' Date</p>
     </div>
     <!-- First Container Movie -->
     <div class="container movie">
-      <h2>Movie or Stream</h2>
-      <button class="test" data-set="18">Test</button>
-      
+      <p class="header-name">Movie</p>
+      <div class="row">
+        <!-- 2 columns  -->
+        <!-- Column 1 Movie Question-->
+        <div class="col s6">
+          <p id="movie-question">Would you like to watch a movie?</p>
+          <input type="text" id="prompt1" placeholder="Select Option" />
+          <!-- Dropdown Trigger -->
+          <a class="dropdown-trigger btn" href="#" data-target="dropdown1"
+            >Options</a
+          >
+          <!-- Dropdown Structure  -->
+          <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">Yes</a></li>
+            <li><a href="#!">No</a></li>
+          </ul>
+        </div>
+        <!-- Column 2 Genre Prompt -->
+        <div class="col s6">
+          <p id="genre-question">What genre would you like?</p>
+          <input type="text" id="prompt2" placeholder="Select Genre" />
+          <!-- Dropdown Trigger -->
+          <a
+            class="dropdown-trigger btn dropdown-genres"
+            href="#"
+            data-target="dropdown2"
+            >Genres</a
+          >
+          <!-- Dropdown Structure  -->
+          <ul id="dropdown2" class="dropdown-content">
+            <li><a href="#!">Action</a></li>
+            <li><a href="#!">Adventure</a></li>
+            <li><a href="#!">Animation</a></li>
+            <li><a href="#!">Comedy</a></li>
+            <li><a href="#!">Documentary</a></li>
+            <li><a href="#!">Family</a></li>
+            <li><a href="#!">Fantasy</a></li>
+            <li><a href="#!">Horror</a></li>
+            <li><a href="#!">Music</a></li>
+            <li><a href="#!">Mystery</a></li>
+            <li><a href="#!">Romance</a></li>
+            <li><a href="#!">Science Fiction</a></li>
+            <li><a href="#!">Thriller</a></li>
+            <li><a href="#!">War</a></li>
+            <li><a href="#!">Western</a></li>
+          </ul>
+        </div>
+      </div>
+    </br>
+    </br>
+   
+    <div class="movie-display"></div>
+    <div class="row">
+      <!-- 2 columns -->
+      <!-- Column 1 Random Button -->
+      <div class="col s6 random-button">
+        <button
+        class="btn waves-effect waves-light"
+        type="submit"
+        name="action"
+        id="submit-button-1"
+        >
+        Random
+      </button>
     </div>
-    <!-- Second Container Restaurants -->
+    <!-- Column 2 Submit Button -->
+    <div class="col s6 submit-button">
+      <button
+      class="btn waves-effect waves-light"
+      type="submit"
+      name="action"
+      id="submit-button-1"
+      >
+      Submit
+    </button>
+  </div>
+</div>
+</div>
+</div>
+<!-- Second Container Restaurants -->
     <div class="container restaurants">
-      <h2>Restaurants</h2>
+      <p class="header-name">Restaurants</p>
     </div>
+
+    <!--Jquery link-->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
