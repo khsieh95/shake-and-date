@@ -4,8 +4,8 @@ body {
 
 .container {
   background-color: white;
-  height: 50vh;
-  width: 60vw;
+  /* height: 50vh;
+  width: 60vw; */
   margin: 0 auto;
   padding: 10px;
 }
@@ -18,10 +18,30 @@ body {
 .header {
   display: flex;
   justify-content: center;
-  background-color: lightgrey;
+  background-color: white;
+  font-size: 38px;
+  font-weight: bold;
   margin-bottom: 3%;
 }
 
-h2 {
+.header-name {
+  font-size: 30px;
+  font-weight: bold;
   text-align: center;
+  margin: 0 auto;
+}
+
+#prompt1,
+#prompt2 {
+  margin-right: 10px;
+  width: 60%;
+}
+
+#submit-button-1 {
+  float: right;
+}
+
+.random-button {
+  display: flex;
+  justify-content: space-between;
 }
