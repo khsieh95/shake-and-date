@@ -22,7 +22,6 @@ $.ajax({
 $(".test").on("click", function(event){
     
 var genre = $(event.target).attr("data-set")
-   console.log(event) 
 var movieList = "https://api.themoviedb.org/3/discover/movie?api_key=dc7d76692b192b772ecce4d938dfa475&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&with_genres=" + genre  
 
 $.ajax({
@@ -30,8 +29,14 @@ $.ajax({
     method: "GET"
 }).then(function(movies){
  var randomMovie = Math.floor(Math.random() * 19)
- console.log(movies.results[randomMovie])
-
+ var movieId = movies.results[randomMovie].id
+ var poster = movies.results[randomMovie].backdrop_path // For poster
+ var title = movies.results[randomMovie].title //For title
+ var synops = movies.results[randomMovie].overview //For Synopsys
+ var voterRate = movies.results[randomMovie].vote_average // For voteer rating
+ 
+ ///calls streem function with movieId as variable
+streem(movieId)
 })
 
 
@@ -39,17 +44,22 @@ $.ajax({
 
 
 
-// Function For Streeming Data
-function streem(){
-var streemLocation = "https://api.themoviedb.org/3/movie/27205?api_key=dc7d76692b192b772ecce4d938dfa475&language=en-US&append_to_response=watch%2Fproviders" 
+// Function For Streeming Data//Insert movieId where x is.
+function streem(x){
+var streemLocation = "https://api.themoviedb.org/3/movie/" + x + "?api_key=dc7d76692b192b772ecce4d938dfa475&language=en-US&append_to_response=watch%2Fproviders" 
 $.ajax({
     url: streemLocation,
     method: "GET"
 }).then(function(streeming){
     console.log(streeming)
-
+    var subscription = streeming["watch/providers"].results.US.flatrate
+    var rent = streeming["watch/providers"].results.US.rent
+    
+       
+    // IMAGE URL https://image.tmdb.org/t/p/w500/+++++++++++++++++++++.jpg)')
 })
 }
+
 
 
 
