@@ -4,8 +4,6 @@ body {
 
 .container {
   background-color: white;
-  /* height: 50vh;
-  width: 60vw; */
   margin: 0 auto;
   padding: 10px;
 }
@@ -37,11 +35,24 @@ body {
   width: 60%;
 }
 
-#submit-button-1 {
-  float: right;
-}
-
 .random-button {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.rest-display {
+  text-align: center;
+}
+
+#restaurant-question {
+  text-align: center;
+}
+
+#prompt3 {
+  margin-right: 10px;
+  width: 50%;
+}
+
+.row {
+  text-align: center;
 }

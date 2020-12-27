@@ -39,7 +39,7 @@
         </div>
         <!-- Column 2 Genre Prompt -->
         <div class="col s6">
-          <p id="genre-question">What genre would you like?</p>
+          <p id="genre-question">What genre movie would you like to watch?</p>
           <input type="text" id="prompt2" placeholder="Select Genre" />
           <!-- Dropdown Trigger -->
           <a
@@ -72,12 +72,24 @@
       </div>
     </br>
     </br>
+    </br>
+    </br>
+    </br>
+
+  
    
-    <div class="movie-display"></div>
+    <div class="movie-display">
+      <div class="movie-poster"></div>
+      <div class="movie-synopsis"></div>
+      <div class="movie-rating"></div>
+      <div class="movie-stream"></div>
+    </div>
+
+
     <div class="row">
-      <!-- 2 columns -->
+      <!-- 1 column -->
       <!-- Column 1 Random Button -->
-      <div class="col s6 random-button">
+      <div class="col s12 random-button-1">
         <button
         class="btn waves-effect waves-light rando"
         type="submit"
@@ -88,23 +100,62 @@
         Random
       </button>
     </div>
-    <!-- Column 2 Submit Button -->
-    <div class="col s6 submit-button">
-      <button
-      class="btn waves-effect waves-light"
-      type="submit"
-      name="action"
-      id="submit-button-1"
-      >
-      Submit
-    </button>
-  </div>
 </div>
 </div>
 </div>
 <!-- Second Container Restaurants -->
     <div class="container restaurants">
       <p class="header-name">Restaurants</p>
+      <div class="row">
+        <div class="col s12">
+          <p id="restaurant-question">What type of cuisine would you like to eat?</p>
+          <input type="text" id="prompt3" placeholder="Select Cuisine" />
+          <!-- Dropdown Trigger -->
+          <a class="dropdown-trigger btn" href="#" data-target="dropdown3"
+            >Cuisine</a
+          >
+          <!-- Dropdown Structure  -->
+          <ul id="dropdown3" class="dropdown-content">
+            <li><a href="#!">American</a></li>
+            <li><a href="#!">Chinese</a></li>
+            <li><a href="#!">Greek</a></li>
+            <li><a href="#!">Italian</a></li>
+            <li><a href="#!">Japanese</a></li>
+            <li><a href="#!">Korean</a></li>
+            <li><a href="#!">Mexican</a></li>
+            <li><a href="#!">Vegan</a></li>
+            <li><a href="#!">Vegetarian</a></li>
+            <li><a href="#!">None</a></li>
+            
+          </ul>
+        </div>
+      </div>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  <div class="restaurant-display">
+    <div class="movie-poster"></div>
+    <div class="movie-synopsis"></div>
+    <div class="movie-rating"></div>
+    <div class="movie-stream"></div>
+  </div>
+
+
+      <div class="row">
+        <div class="col s12 random-button-2">
+        <button
+        class="btn waves-effect waves-light restaurant-random"
+        type="submit"
+        name="action"
+        id="submit-button-1"
+        
+        >
+        Random
+        </button>
+        </div>
+      </div>
     </div>
 
     <!--Jquery link-->
