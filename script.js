@@ -160,15 +160,59 @@ function streem(x) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Restaurant Code Here
-
-function food(x) {
-  var foodSearch = "https://developers.zomato.com/api/v2.1/locations?" + x  + "api_key=00d2f28b537acf457659c00a5ac30e58&query=" 
-  $.ajax({
-    url : foodSearch,
-    method: "GET"
-  }).then(function(foodFound){
-    console.log(foodFound);
-
+$(".food-option").on("click", function(event){
+$.ajax({
+  method: "GET",
+  url: "https://developers.zomato.com/api/v2.1/search?count=20&lat=48.999&lon=-120.893&radius=20%2C000&cuisines=25&sort=rating&order=desc",
+  headers: {
+    "user-key": "b23ce13853bea993b459518ec134302f",
+    "content-type": "application/json"
+  }
+})
+  .then(function(response){
+    console.log(response)
+    
   })
-}
+
+}) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
