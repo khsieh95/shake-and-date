@@ -96,7 +96,6 @@ function streem(x) {
     x +
     "?api_key=dc7d76692b192b772ecce4d938dfa475&language=en-US&append_to_response=watch%2Fproviders";
   $.ajax({
-<<<<<<< HEAD
       url: streemLocation,
       method: "GET"
   }).then(function(streeming){
@@ -144,36 +143,6 @@ function streem(x) {
   }
 
   ////////////////////////////FUNCTION FOR DIRECT MOVIE SEARCH/////////////////////////////
-=======
-    url: streemLocation,
-    method: "GET",
-  }).then(function (streeming) {
-    console.log(streeming);
-    var poster = streeming.poster_path; // For poster
-    var title = streeming.title; //For title
-    var synops = streeming.overview; //For Synopsys
-    var voterRate = streeming.vote_average; // For voteer rating
-    $(".movie-display").text("Title: " + title);
-    $(".movie-display").append(
-      $("<img>").attr("src", "https://image.tmdb.org/t/p/w500" + poster)
-    );
-    $("img").attr("height", "320vw");
-    $(".movie-display").append(synops);
-    $(".movie-display").append("Stars: " + voterRate);
-    /////////////////////NEEDS BUG FIX/////////////////////////////////
-    //   var subscription = streeming["watch/providers"].results.US.flatrate
-    //   for (var i = 0; i < subscription.length; i++){
-    //   $(".movie-display").append($("<a>").text("streem " + subscription[i].provider_name))
-
-    // }
-    //   var rent = streeming["watch/providers"].results.US.rent
-    //   for (var i = 0; i < rent.length; i++){
-    //   $(".movie-display").append($("<a>").text("Available for rent at: " + rent[i].provider_name))
-    //   }
-  });
-}
-////////////////////////////FUNCTION FOR DIRECT MOVIE SEARCH/////////////////////////////
->>>>>>> development
 //   $(".search").on("click", function(){
 // var movieSearch = $("#prompt1").val()
 // var searchName = "https://api.themoviedb.org/3/search/movie?api_key=dc7d76692b192b772ecce4d938dfa475&query=" + movieSearch
