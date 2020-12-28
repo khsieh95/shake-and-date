@@ -155,3 +155,64 @@ function streem(x) {
 //   })
 
 // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Restaurant Code Here
+$(".food-option").on("click", function(event){
+$.ajax({
+  method: "GET",
+  url: "https://developers.zomato.com/api/v2.1/search?count=20&lat=48.999&lon=-120.893&radius=20%2C000&cuisines=25&sort=rating&order=desc",
+  headers: {
+    "user-key": "b23ce13853bea993b459518ec134302f",
+    "content-type": "application/json"
+  }
+})
+  .then(function(response){
+    console.log(response)
+    
+  })
+
+}) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
