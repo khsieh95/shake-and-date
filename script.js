@@ -1,6 +1,40 @@
 // API Key: dc7d76692b192b772ecce4d938dfa475 for tmdb
 $(".dropdown-trigger").dropdown();
 
+var objectStreem = {
+  "HBO Max": "https://www.hbomax.com/",
+  "HBO Now": "https://play.hbonow.com/page/urn:hbo:page:home",
+  "DIRECTV": "https://www.directv.com/",
+  "Sling TV": "https://watch.sling.com/",
+  "FXNow": "https://fxnow.fxnetworks.com/",
+  "Disney Plus": "https://www.disneyplus.com/",
+  "Netflix": "https://www.netflix.com/",
+  "Spectrum On Demand": "https://www.spectrumondemand.com/",
+  "fuboTV": "https://www.fubo.tv/welcome",
+  "Starz": "https://www.starz.com/us/en/",
+  "Hulu": "https://www.hulu.com/",
+  "IndieFlix": "https://www.indieflix.com/",
+  "Max Go": "https://play.maxgo.com/page/urn:hbo:page:home",
+  "Amazon Prime Video": "https://www.amazon.com/Amazon-Video/",
+  "TNT": "https://www.tntdrama.com/",
+  "TBS": "https://www.tbs.com/",
+  "USA Network": "https://www.usanetwork.com/",
+  }
+
+  var objectRent = {
+    "Apple iTunes": "https://tv.apple.com/",
+    "Google Play Movies": "https://play.google.com/store/movies?hl=en_US&gl=US",
+    "Amazon Video": "https://www.amazon.com/gp/video/storefront/ref=atv_scout_redirect#ace-g7448806443",
+    "YouTube": "https://www.youtube.com/",
+    "Vudu": "https://www.vudu.com/",
+    "Microsoft Store": "https://www.microsoft.com/en-us/store/movies-and-tv",
+    "Redbox": "https://www.redbox.com/",
+    "DIRECTV": "https://www.directv.com/",
+    "AMC on Demand": "https://www.amctheatres.com/on-demand"
+  }
+    
+
+
 /////////////////////EVENT LISTENER SELECTS RANDOM GENRE AND PLUGS IT INTO STREEM FUNCTION////////////////////////////
 $(".rando").on("click", function () {
   var randomGenre = [
@@ -62,34 +96,53 @@ function streem(x) {
     x +
     "?api_key=dc7d76692b192b772ecce4d938dfa475&language=en-US&append_to_response=watch%2Fproviders";
   $.ajax({
-    url: streemLocation,
-    method: "GET",
-  }).then(function (streeming) {
-    console.log(streeming);
-    var poster = streeming.poster_path; // For poster
-    var title = streeming.title; //For title
-    var synops = streeming.overview; //For Synopsys
-    var voterRate = streeming.vote_average; // For voteer rating
-    $(".movie-display").text("Title: " + title);
-    $(".movie-display").append(
-      $("<img>").attr("src", "https://image.tmdb.org/t/p/w500" + poster)
-    );
-    $("img").attr("height", "320vw");
-    $(".movie-display").append(synops);
-    $(".movie-display").append("Stars: " + voterRate);
-    /////////////////////NEEDS BUG FIX/////////////////////////////////
-    //   var subscription = streeming["watch/providers"].results.US.flatrate
-    //   for (var i = 0; i < subscription.length; i++){
-    //   $(".movie-display").append($("<a>").text("streem " + subscription[i].provider_name))
+      url: streemLocation,
+      method: "GET"
+  }).then(function(streeming){
+      console.log(streeming)
+      var poster = streeming.poster_path // For poster
+      var title = streeming.title //For title
+      var synops = streeming.overview //For Synopsys
+      var voterRate = streeming.vote_average // For voteer rating
+      $(".movie-display").text("Title: " + title)
+      $(".movie-display").append($("<img>").attr("src", "https://image.tmdb.org/t/p/w500" + poster))
+      $("img").attr("height", "320vw")
+      $(".movie-display").append(synops)
+      $(".movie-display").append("Stars: " + voterRate)
+ /////////////////////Streeming And Rental Results/////////////////////////////////    
+      var subscription = streeming["watch/providers"].results.US.flatrate
+      try{
+      for (var i = 0; i < subscription.length; i++){
+      // $(".movie-display").append($("<a>").text("streem " + subscription[i].provider_name))
+       for(var index = 0; index < Object.entries(objectStreem).length; index++){
+         if(subscription[i].provider_name === Object.entries(objectStreem)[index][0]){
+          $(".movie-display").append($("<ul>").append($("<a>").attr( "href", Object.entries(objectStreem)[index][1]).text("STREEM" + subscription[i].provider_name).attr("target", "_blank")))
+        //  $(".movie-display").append($("<a>").attr( "href", Object.entries(objectStreem)[index][1]).text(subscription[i].provider_name).attr("target", "_blank"))
+         console.log(Object.entries(objectStreem)[index][1])
+         }
+      
+       }
+      }
+      } catch (err){
+        $(".movie-display").append($("<div>").text("No known subscription service."))
+      }
+      var rental = streeming["watch/providers"].results.US.rent
+      for (var i = 0; i < 4 ; i++){
+      // $(".movie-display").append($("<a>").text("RENT: " + rental[i].provider_name))
+      for(var index = 0; index < Object.entries(objectRent).length; index++){
+        if(rental[i].provider_name === Object.entries(objectRent)[index][0]){
+        $(".movie-display").append($("<ul>").append($("<a>").attr( "href", Object.entries(objectRent)[index][1]).text("RENT" + rental[i].provider_name).attr("target", "_blank")))
+        // $("ul").append($("<a>").attr( "href", Object.entries(objectRent)[index][1]).text(rental[i].provider_name).attr("target", "_blank"))
+        console.log(Object.entries(objectRent)[index][1])
+        }
+     
+      }
+      }
+      
+  })
+  }
 
-    // }
-    //   var rent = streeming["watch/providers"].results.US.rent
-    //   for (var i = 0; i < rent.length; i++){
-    //   $(".movie-display").append($("<a>").text("Available for rent at: " + rent[i].provider_name))
-    //   }
-  });
-}
-////////////////////////////FUNCTION FOR DIRECT MOVIE SEARCH/////////////////////////////
+  ////////////////////////////FUNCTION FOR DIRECT MOVIE SEARCH/////////////////////////////
 //   $(".search").on("click", function(){
 // var movieSearch = $("#prompt1").val()
 // var searchName = "https://api.themoviedb.org/3/search/movie?api_key=dc7d76692b192b772ecce4d938dfa475&query=" + movieSearch
