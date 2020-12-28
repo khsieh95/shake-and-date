@@ -32,15 +32,15 @@
             >Options</a
           >
           <!-- Dropdown Structure  -->
-          <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!" class="search">Yes</a></li>
+          <ul id="dropdown1" class="dropdown-content movieDrop">
+            <li><a href="#!" class="yes">Yes</a></li>
             <li><a href="#!">No</a></li>
           </ul>
         </div>
         <!-- Column 2 Genre Prompt -->
-        <div class="col s6">
+        <div class="col s6 hideMovie">
           <p id="genre-question">What genre movie would you like to watch?</p>
-          <input type="text" id="prompt2" placeholder="Select Genre" />
+          <input type="text" id="prompt2" placeholder="Select Genre"/>
           <!-- Dropdown Trigger -->
           <a
             class="dropdown-trigger btn dropdown-genres"
@@ -50,7 +50,7 @@
           >
           
           <!-- Dropdown Structure  -->
-          <ul id="dropdown2" class="dropdown-content">
+          <ul id="dropdown2" class="dropdown-content genreDropdown">
             <li><a href="#!" data-id="28">Action</a></li>
             <li><a href="#!" data-id="12">Adventure</a></li>
             <li><a href="#!" data-id="16">Animation</a></li>
@@ -75,23 +75,20 @@
     </br>
     </br>
     </br>
-
-  
-   
-    <div class="movie-display">
+      <div class="movie-title"></div>
       <div class="movie-poster"></div>
       <div class="movie-synopsis"></div>
       <div class="movie-rating"></div>
       <div class="movie-stream"></div>
-    </div>
-
+    
+     
 
     <div class="row">
       <!-- 1 column -->
       <!-- Column 1 Random Button -->
       <div class="col s12 random-button-1">
         <button
-        class="btn waves-effect waves-light rando"
+        class="btn waves-effect waves-light rando hideMovie"
         type="submit"
         name="action"
         id="submit-button-1"
@@ -136,10 +133,10 @@
   </br>
   </br>
   <div class="restaurant-display">
-    <div class="movie-poster"></div>
+    <!-- <div class="movie-poster"></div>
     <div class="movie-synopsis"></div>
     <div class="movie-rating"></div>
-    <div class="movie-stream"></div>
+    <div class="movie-stream"></div> -->
   </div>
 
 

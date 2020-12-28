@@ -1,6 +1,19 @@
 // API Key: dc7d76692b192b772ecce4d938dfa475 for tmdb
 $(".dropdown-trigger").dropdown();
+     // navigator.geolocation.getCurrentPosition(function(position){
+    //   console.log(position.coords.latitude)
+    //   console.log(position.coords.longitude)
+    // })
 
+///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
+function clear(){
+$(".movie-title").empty()
+$(".movie-poster").empty()
+$(".movie-synopsis").empty()
+$(".movie-rating").empty()
+$(".movie-stream").empty()
+}
+ 
 var objectStreem = {
   "HBO Max": "https://www.hbomax.com/",
   "HBO Now": "https://play.hbonow.com/page/urn:hbo:page:home",
@@ -32,11 +45,22 @@ var objectStreem = {
     "DIRECTV": "https://www.directv.com/",
     "AMC on Demand": "https://www.amctheatres.com/on-demand"
   }
-    
+ //////////////////// DISPLAYCONTROL PRODUCES ELEMENTS TO THE SCREEN IF CLASS === YES//////////////////   
+function displayControl(){
+  $(".movieDrop").on("click", function(event){
+    if ($(event.target).attr("class") === "yes"){
+      $(".hideMovie").css("display", "block")
+      $(".random-button-1").css("display", "flex")
+      $(".random-button-1").css("justify-content", "center")
+    }
 
+  })
+}
+displayControl()
 
 /////////////////////EVENT LISTENER SELECTS RANDOM GENRE AND PLUGS IT INTO STREEM FUNCTION////////////////////////////
 $(".rando").on("click", function () {
+  clear()
   var randomGenre = [
     "28",
     "12",
@@ -72,7 +96,10 @@ $(".rando").on("click", function () {
   });
 });
 ///////////////////Click Event Targets Genre and plugs in streem Function///////////////////////////
-$(".dropdown-content").on("click", function (event) {
+$(".genreDropdown").on("click", function (event) {
+  clear()
+  var textContent = $(event.target).text()//line 99 + 100 change placholder to clicked on text.
+  $("#prompt2").attr("placeholder", textContent)
   var genre = $(event.target).attr("data-id");
   console.log(genre);
   var movieList =
@@ -104,11 +131,11 @@ function streem(x) {
       var title = streeming.title //For title
       var synops = streeming.overview //For Synopsys
       var voterRate = streeming.vote_average // For voteer rating
-      $(".movie-display").text("Title: " + title)
-      $(".movie-display").append($("<img>").attr("src", "https://image.tmdb.org/t/p/w500" + poster))
+      $(".movie-title").text("Title: " + title)
+      $(".movie-poster").append($("<img>").attr("src", "https://image.tmdb.org/t/p/w500" + poster))
       $("img").attr("height", "320vw")
-      $(".movie-display").append(synops)
-      $(".movie-display").append("Stars: " + voterRate)
+      $(".movie-synopsis").append(synops)
+      $(".movie-rating").append("Stars: " + voterRate)
  /////////////////////Streeming And Rental Results/////////////////////////////////    
       var subscription = streeming["watch/providers"].results.US.flatrate
       try{
@@ -116,7 +143,7 @@ function streem(x) {
       // $(".movie-display").append($("<a>").text("streem " + subscription[i].provider_name))
        for(var index = 0; index < Object.entries(objectStreem).length; index++){
          if(subscription[i].provider_name === Object.entries(objectStreem)[index][0]){
-          $(".movie-display").append($("<ul>").append($("<a>").attr( "href", Object.entries(objectStreem)[index][1]).text("STREEM" + subscription[i].provider_name).attr("target", "_blank")))
+          $(".movie-stream").append($("<ul>").append($("<a>").attr( "href", Object.entries(objectStreem)[index][1]).text("STREEM" + subscription[i].provider_name).attr("target", "_blank")))
         //  $(".movie-display").append($("<a>").attr( "href", Object.entries(objectStreem)[index][1]).text(subscription[i].provider_name).attr("target", "_blank"))
          console.log(Object.entries(objectStreem)[index][1])
          }
@@ -124,14 +151,14 @@ function streem(x) {
        }
       }
       } catch (err){
-        $(".movie-display").append($("<div>").text("No known subscription service."))
+        $(".movie-stream").append($("<div>").text("No known subscription service."))
       }
       var rental = streeming["watch/providers"].results.US.rent
       for (var i = 0; i < 4 ; i++){
       // $(".movie-display").append($("<a>").text("RENT: " + rental[i].provider_name))
       for(var index = 0; index < Object.entries(objectRent).length; index++){
         if(rental[i].provider_name === Object.entries(objectRent)[index][0]){
-        $(".movie-display").append($("<ul>").append($("<a>").attr( "href", Object.entries(objectRent)[index][1]).text("RENT" + rental[i].provider_name).attr("target", "_blank")))
+        $(".movie-stream").append($("<ul>").append($("<a>").attr( "href", Object.entries(objectRent)[index][1]).text("RENT" + rental[i].provider_name).attr("target", "_blank")))
         // $("ul").append($("<a>").attr( "href", Object.entries(objectRent)[index][1]).text(rental[i].provider_name).attr("target", "_blank"))
         console.log(Object.entries(objectRent)[index][1])
         }
@@ -141,6 +168,7 @@ function streem(x) {
       
   })
   }
+  
 
   ////////////////////////////FUNCTION FOR DIRECT MOVIE SEARCH/////////////////////////////
 //   $(".search").on("click", function(){
@@ -155,3 +183,6 @@ function streem(x) {
 //   })
 
 // })
+
+
+

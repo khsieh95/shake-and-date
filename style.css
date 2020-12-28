@@ -34,10 +34,12 @@ body {
   margin-right: 10px;
   width: 60%;
 }
-
-.random-button {
+.hideMovie{
+  display:none
+}
+.random-button-1 {
   display: flex;
-  justify-content: center;
+  justify-content: center; 
 }
 
 .rest-display {
