@@ -43,13 +43,13 @@ body {
 }
 
 /* Question input */
-#prompt1,
+/* #prompt1,
 #prompt2 {
   margin-right: 10px;
   width: 60%;
-}
+} */
 /* Hide movie  */
-.hideMovie {
+.showMovie {
   display: none;
 }
 /* Random button function 1 */
@@ -79,4 +79,9 @@ body {
 
 #saved-header {
   text-align: center;
+}
+/* For centering movie display items */
+.display{
+  display: flex;
+  justify-content: center;
 }
