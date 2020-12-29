@@ -5,18 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shake n' Date</title>
 
+     <!-- Google fonts -->
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
     <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+   
 
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Header -->
     <div class="header">
-      <p id="page-title">Shake n' Date</p>
+      <div class="row">
+        <div class="col s12 title-name">
+          <h1>Shake n' Date</h1>
+        </div>
+      </div>
+      <div class="row save-link">
+        <div class="col s12">
+
+            <a class = "hyperlink" href = "saved.html">Saved Dates</a>  
+        </div>
+      </div>
     </div>
     <!-- First Container Movie -->
     <div class="container movie">
@@ -24,7 +39,7 @@
       <div class="row">
         <!-- 2 columns  -->
         <!-- Column 1 Movie Question-->
-        <div class="col s6">
+        <div class="col s12">
           <p id="movie-question">Would you like to watch a movie?</p>
           <input type="text" id="prompt1" placeholder="Select Option" />
           <!-- Dropdown Trigger -->
@@ -36,38 +51,38 @@
             <li><a href="#!" class="yes">Yes</a></li>
             <li><a href="#!">No</a></li>
           </ul>
-        </div>
-        <!-- Column 2 Genre Prompt -->
-        <div class="col s6 hideMovie">
-          <p id="genre-question">What genre movie would you like to watch?</p>
-          <input type="text" id="prompt2" placeholder="Select Genre"/>
-          <!-- Dropdown Trigger -->
-          <a
+          <!-- Column 2 Genre Prompt -->
+          <div class="hideMovie">
+            <p id="genre-question">What genre movie would you like to watch?</p>
+            <input type="text" id="prompt2" placeholder="Select Genre"/>
+            <!-- Dropdown Trigger -->
+            <a
             class="dropdown-trigger btn dropdown-genres"
             href="#"
             data-target="dropdown2"
             >Genres</a
-          >
-          
-          <!-- Dropdown Structure  -->
-          <ul id="dropdown2" class="dropdown-content genreDropdown">
-            <li><a href="#!" data-id="28">Action</a></li>
-            <li><a href="#!" data-id="12">Adventure</a></li>
-            <li><a href="#!" data-id="16">Animation</a></li>
-            <li><a href="#!" data-id="35">Comedy</a></li>
-            <li><a href="#!" data-id="99">Documentary</a></li>
-            <li><a href="#!" data-id="18">Drama</a></li>
-            <li><a href="#!" data-id="10751">Family</a></li>
-            <li><a href="#!" data-id="14">Fantasy</a></li>
-            <li><a href="#!" data-id="27">Horror</a></li>
-            <li><a href="#!" data-id="10402">Music</a></li>
-            <li><a href="#!" data-id="9648">Mystery</a></li>
-            <li><a href="#!" data-id="10749">Romance</a></li>
-            <li><a href="#!" data-id="878">Science Fiction</a></li>
-            <li><a href="#!" data-id="53">Thriller</a></li>
-            <li><a href="#!" data-id="10752">War</a></li>
-            <li><a href="#!" data-id="37">Western</a></li>
-          </ul>
+            >
+            
+            <!-- Dropdown Structure  -->
+            <ul id="dropdown2" class="dropdown-content genreDropdown">
+              <li><a href="#!" data-id="28">Action</a></li>
+              <li><a href="#!" data-id="12">Adventure</a></li>
+              <li><a href="#!" data-id="16">Animation</a></li>
+              <li><a href="#!" data-id="35">Comedy</a></li>
+              <li><a href="#!" data-id="99">Documentary</a></li>
+              <li><a href="#!" data-id="18">Drama</a></li>
+              <li><a href="#!" data-id="10751">Family</a></li>
+              <li><a href="#!" data-id="14">Fantasy</a></li>
+              <li><a href="#!" data-id="27">Horror</a></li>
+              <li><a href="#!" data-id="10402">Music</a></li>
+              <li><a href="#!" data-id="9648">Mystery</a></li>
+              <li><a href="#!" data-id="10749">Romance</a></li>
+              <li><a href="#!" data-id="878">Science Fiction</a></li>
+              <li><a href="#!" data-id="53">Thriller</a></li>
+              <li><a href="#!" data-id="10752">War</a></li>
+              <li><a href="#!" data-id="37">Western</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </br>
@@ -75,11 +90,13 @@
     </br>
     </br>
     </br>
+    <div class="movie-display">
       <div class="movie-title"></div>
       <div class="movie-poster"></div>
       <div class="movie-synopsis"></div>
       <div class="movie-rating"></div>
       <div class="movie-stream"></div>
+    </div>
     
      
 
