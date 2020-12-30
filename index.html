@@ -34,61 +34,63 @@
       </div>
     </div>
     <!-- First Container Movie -->
-    <div class="container movie">
-      <p class="header-name">Movie</p>
-      <div class="row">
-        <!-- 2 columns  -->
-        <!-- Column 1 Movie Question-->
-        <div class="col s12">
-          <p class="phase1IfYes" id="movie-question">Would you like to watch a movie?</p>
-          <!-- <input class="phase1IfYes" type="text" id="prompt1" placeholder="Select Option" /> get rid of if changes approved by group-->
-          <!-- Dropdown Trigger -->
-          <a class="dropdown-trigger btn phase1IfYes" href="#" data-target="dropdown1"
-            >Options</a>
-          <!-- Dropdown Structure  -->
-          <ul id="dropdown1" class="dropdown-content movieDrop">
-            <li><a href="#!" class="yes">Yes</a></li>
-            <li><a href="#!">No</a></li>
-          </ul>
-          <!-- Column 2 Genre Prompt -->
-          <div class="showMovie">
-            <p id="genre-question">What genre movie would you like to watch?</p>
-            <!-- <input type="text" id="prompt2" placeholder="Select Genre"/> get rid of if changes approved by group--> 
+    <div class="container">
+      <div class="movie">
+        <p class="header-name">Movie</p>
+        <div class="row">
+          <!-- 2 columns  -->
+          <!-- Column 1 Movie Question-->
+          <div class="col s12">
+            <p class="phase1IfYes" id="movie-question">Would you like to watch a movie?</p>
+            <!-- <input class="phase1IfYes" type="text" id="prompt1" placeholder="Select Option" /> -->
             <!-- Dropdown Trigger -->
-            <a
-            class="dropdown-trigger btn dropdown-genres"
-            href="#"
-            data-target="dropdown2"
-            >Genres</a>
-            <button
-        class="btn waves-effect waves-light rando"
-        type="submit"
-        name="action"
-        id="submit-button-1"
-        
-        >
-        Random
-      </button>
-            
+            <a class="dropdown-trigger btn phase1IfYes" href="#" data-target="dropdown1"
+              >Options</a>
             <!-- Dropdown Structure  -->
-            <ul id="dropdown2" class="dropdown-content genreDropdown">
-              <li><a href="#!" data-id="28">Action</a></li>
-              <li><a href="#!" data-id="12">Adventure</a></li>
-              <li><a href="#!" data-id="16">Animation</a></li>
-              <li><a href="#!" data-id="35">Comedy</a></li>
-              <li><a href="#!" data-id="99">Documentary</a></li>
-              <li><a href="#!" data-id="18">Drama</a></li>
-              <li><a href="#!" data-id="10751">Family</a></li>
-              <li><a href="#!" data-id="14">Fantasy</a></li>
-              <li><a href="#!" data-id="27">Horror</a></li>
-              <li><a href="#!" data-id="10402">Music</a></li>
-              <li><a href="#!" data-id="9648">Mystery</a></li>
-              <li><a href="#!" data-id="10749">Romance</a></li>
-              <li><a href="#!" data-id="878">Science Fiction</a></li>
-              <li><a href="#!" data-id="53">Thriller</a></li>
-              <li><a href="#!" data-id="10752">War</a></li>
-              <li><a href="#!" data-id="37">Western</a></li>
+            <ul id="dropdown1" class="dropdown-content movieDrop">
+              <li><a href="#!" class="yes">Yes</a></li>
+              <li><a href="#!" class="no">No</a></li>
             </ul>
+            <!-- Column 2 Genre Prompt -->
+            <div class="showMovie">
+              <p id="genre-question">What genre movie would you like to watch?</p>
+              <!-- <input type="text" id="prompt2" placeholder="Select Genre"/> get rid of if changes approved by group--> 
+              <!-- Dropdown Trigger -->
+              <a
+              class="dropdown-trigger btn dropdown-genres"
+              href="#"
+              data-target="dropdown2"
+              >Genres</a>
+              <button
+          class="btn waves-effect waves-light rando"
+          type="submit"
+          name="action"
+          id="submit-button-1"
+          
+          >
+          Random
+        </button>
+              
+              <!-- Dropdown Structure  -->
+              <ul id="dropdown2" class="dropdown-content genreDropdown">
+                <li><a href="#!" data-id="28">Action</a></li>
+                <li><a href="#!" data-id="12">Adventure</a></li>
+                <li><a href="#!" data-id="16">Animation</a></li>
+                <li><a href="#!" data-id="35">Comedy</a></li>
+                <li><a href="#!" data-id="99">Documentary</a></li>
+                <li><a href="#!" data-id="18">Drama</a></li>
+                <li><a href="#!" data-id="10751">Family</a></li>
+                <li><a href="#!" data-id="14">Fantasy</a></li>
+                <li><a href="#!" data-id="27">Horror</a></li>
+                <li><a href="#!" data-id="10402">Music</a></li>
+                <li><a href="#!" data-id="9648">Mystery</a></li>
+                <li><a href="#!" data-id="10749">Romance</a></li>
+                <li><a href="#!" data-id="878">Science Fiction</a></li>
+                <li><a href="#!" data-id="53">Thriller</a></li>
+                <li><a href="#!" data-id="10752">War</a></li>
+                <li><a href="#!" data-id="37">Western</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -126,33 +128,36 @@
 </div>
 </div>
 </div>
+
 <!-- Second Container Restaurants -->
-    <div class="container restaurants">
-      <p class="header-name">Restaurants</p>
-      <div class="row">
-        <div class="col s12">
-          <p id="restaurant-question">What type of cuisine would you like to eat?</p>
-          <input type="text" id="prompt3" placeholder="Select Cuisine" />
-          <!-- Dropdown Trigger -->
-          <a class="dropdown-trigger btn" href="#" data-target="dropdown3"
-            >Cuisine</a
-          >
-          <!-- Dropdown Structure  -->
-          <ul id="dropdown3" class="dropdown-content food-option">
-            <li><a href="#!">American</a></li>
-            <li><a href="#!">Chinese</a></li>
-            <li><a href="#!">Greek</a></li>
-            <li><a href="#!">Italian</a></li>
-            <li><a href="#!">Japanese</a></li>
-            <li><a href="#!">Korean</a></li>
-            <li><a href="#!">Mexican</a></li>
-            <li><a href="#!">Vegan</a></li>
-            <li><a href="#!">Vegetarian</a></li>
-            <li><a href="#!">None</a></li>
-            
-          </ul>
+    <!-- <div class="container"> -->
+      <div class="restaurants">
+        <p class="header-name">Restaurants</p>
+        <div class="row">
+          <div class="col s12">
+            <p id="restaurant-question">What type of cuisine would you like to eat?</p>
+            <input type="text" id="prompt3" placeholder="Select Cuisine" />
+            <!-- Dropdown Trigger -->
+            <a class="dropdown-trigger btn" href="#" data-target="dropdown3"
+              >Cuisine</a
+            >
+            <!-- Dropdown Structure  -->
+            <ul id="dropdown3" class="dropdown-content food-option">
+              <li><a href="#!" data-foodid="1">American</a></li>
+              <li><a href="#!" data-foodid="25">Chinese</a></li>
+              <li><a href="#!" data-foodid="156">Greek</a></li>
+              <li><a href="#!" data-foodid="55">Italian</a></li>
+              <li><a href="#!" data-foodid="60">Japanese</a></li>
+              <li><a href="#!" data-foodid="67">Korean</a></li>
+              <li><a href="#!" data-foodid="73">Mexican</a></li>
+              <li><a href="#!" data-foodid="99">Vietnamese</a></li>
+              <li><a href="#!" data-foodid="308">Vegetarian</a></li>
+              <li><a href="#!">None</a></li>
+              
+            </ul>
+          </div>
         </div>
-      </div>
+      <!-- </div> -->
   </br>
   </br>
   </br>
