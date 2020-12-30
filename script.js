@@ -8,6 +8,7 @@ $(".restaurants").hide();
 $(".location").hide();
 
 var nextButton = $(".send-button");
+var displayMovie = $(".movie-display");
 
 ///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
 function clear() {
@@ -18,7 +19,7 @@ function clear() {
   $(".movie-stream").empty();
   $(".movie-rent").empty();
 }
-//////////////FUNCTION FOR GRABING CITY ID FROM FOOD COURT//////////////////////
+//////////////FUNCTION FOR GRABING CITY ID FROM COURT//////////////////////
 function cityIdSnatcher() {
   $(".cityOptions").on("click", function (event) {
     var cityId = $(event.target).val();
@@ -113,6 +114,7 @@ $(".rando").on("click", function () {
     ///calls streem function with movieId as variable
     streem(movieId);
   });
+  displayMovie.removeClass("hide");
 });
 ///////////////////Click Event Targets Genre and plugs in streem Function///////////////////////////
 $(".genreDropdown").on("click", function (event) {
@@ -133,6 +135,7 @@ $(".genreDropdown").on("click", function (event) {
     ///calls streem function with movieId as variable
     streem(movieId);
   });
+  displayMovie.removeClass("hide");
 });
 
 // Function For Streeming Data//Insert movieId where x is.
