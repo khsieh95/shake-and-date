@@ -15,7 +15,7 @@ body {
 }
 /* Header of containers */
 .header-name {
-  font-size: 30px; 
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   margin: 0 auto;
@@ -81,7 +81,18 @@ body {
   text-align: center;
 }
 /* For centering movie display items */
-.display{
+.display {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-display {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.next-button {
   display: flex;
   justify-content: center;
 }

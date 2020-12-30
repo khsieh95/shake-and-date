@@ -4,7 +4,9 @@ $(".dropdown-trigger").dropdown();
 //   console.log(position.coords.latitude)
 //   console.log(position.coords.longitude)
 // })
-$(".restaurants").hide()
+$(".restaurants").hide();
+
+var nextButton = $(".send-button");
 
 ///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
 function clear() {
@@ -16,31 +18,30 @@ function clear() {
   $(".movie-rent").empty();
 }
 //////////////FUNCTION FOR GRABING CITY ID FROM FOOD COURT//////////////////////
-function cityIdSnatcher(){
-  $(".cityOptions").on("click", function(event){
-    var cityId = $(event.target).val()
-    console.log(cityId)
-   })
-  
-  }
+function cityIdSnatcher() {
+  $(".cityOptions").on("click", function (event) {
+    var cityId = $(event.target).val();
+    console.log(cityId);
+  });
+}
 
 var objectStreem = {
   "HBO Max": "https://www.hbomax.com/",
   "HBO Now": "https://play.hbonow.com/page/urn:hbo:page:home",
-  "DIRECTV": "https://www.directv.com/",
+  DIRECTV: "https://www.directv.com/",
   "Sling TV": "https://watch.sling.com/",
-  "FXNow": "https://fxnow.fxnetworks.com/",
+  FXNow: "https://fxnow.fxnetworks.com/",
   "Disney Plus": "https://www.disneyplus.com/",
-  "Netflix": "https://www.netflix.com/",
+  Netflix: "https://www.netflix.com/",
   "Spectrum On Demand": "https://www.spectrumondemand.com/",
-  "fuboTV": "https://www.fubo.tv/welcome",
-  "Starz": "https://www.starz.com/us/en/",
-  "Hulu": "https://www.hulu.com/",
-  "IndieFlix": "https://www.indieflix.com/",
+  fuboTV: "https://www.fubo.tv/welcome",
+  Starz: "https://www.starz.com/us/en/",
+  Hulu: "https://www.hulu.com/",
+  IndieFlix: "https://www.indieflix.com/",
   "Max Go": "https://play.maxgo.com/page/urn:hbo:page:home",
   "Amazon Prime Video": "https://www.amazon.com/Amazon-Video/",
-  "TNT": "https://www.tntdrama.com/",
-  "TBS": "https://www.tbs.com/",
+  TNT: "https://www.tntdrama.com/",
+  TBS: "https://www.tbs.com/",
   "USA Network": "https://www.usanetwork.com/",
 };
 
@@ -49,11 +50,11 @@ var objectRent = {
   "Google Play Movies": "https://play.google.com/store/movies?hl=en_US&gl=US",
   "Amazon Video":
     "https://www.amazon.com/gp/video/storefront/ref=atv_scout_redirect#ace-g7448806443",
-  "YouTube": "https://www.youtube.com/",
-  "Vudu": "https://www.vudu.com/",
+  YouTube: "https://www.youtube.com/",
+  Vudu: "https://www.vudu.com/",
   "Microsoft Store": "https://www.microsoft.com/en-us/store/movies-and-tv",
-  "Redbox": "https://www.redbox.com/",
-  "DIRECTV": "https://www.directv.com/",
+  Redbox: "https://www.redbox.com/",
+  DIRECTV: "https://www.directv.com/",
   "AMC on Demand": "https://www.amctheatres.com/on-demand",
 };
 //////////////////// DISPLAYCONTROL PRODUCES ELEMENTS TO THE SCREEN IF CLASS === YES//////////////////
@@ -63,13 +64,14 @@ function displayControlMovie() {
       $(".showMovie").css("display", "block");
       $(".random-button-1").css("display", "flex");
       $(".random-button-1").css("justify-content", "center");
-      $(".phase1IfYes").css("display", "none")
+      $(".phase1IfYes").css("display", "none");
     }
-    if ($(event.target).attr("class") === "no"){
-      $(".movie").hide()
-      $(".movie-display").hide()
-      $(".container").append($(".restaurants").show())
+    if ($(event.target).attr("class") === "no") {
+      $(".movie").hide();
+      $(".movie-display").hide();
+      $(".container").append($(".restaurants").show());
     }
+    nextButton.removeClass("hide");
   });
 }
 displayControlMovie();
@@ -167,13 +169,13 @@ function streem(x) {
             subscription[i].provider_name ===
             Object.entries(objectStreem)[index][0]
           ) {
-            $(".streaming-header").text("Subscription Availability")
+            $(".streaming-header").text("Subscription Availability");
             $(".movie-stream").append(
               $("<ul>").append(
                 $("<a>")
                   .attr("href", Object.entries(objectStreem)[index][1])
                   .text(subscription[i].provider_name)
-                  .css({"margine-left" : "1vw", "margin-right" : "1vw"})
+                  .css({ "margine-left": "1vw", "margin-right": "1vw" })
                   .attr("target", "_blank")
               )
             );
@@ -187,33 +189,37 @@ function streem(x) {
       );
     }
     var rental = streeming["watch/providers"].results.US.rent;
-    try{
-    for (var i = 0; i < 4; i++) {
-      // $(".movie-display").append($("<a>").text("RENT: " + rental[i].provider_name))
-      for (var index = 0; index < Object.entries(objectRent).length; index++) {
-        if (rental[i].provider_name === Object.entries(objectRent)[index][0]) {
-          $(".rental-header").text("Rental Availability")
-          $(".movie-rent").append(
-            $("<ul>").append(
-              $("<a>")
-                .attr("href", Object.entries(objectRent)[index][1]+title)
-                .text(rental[i].provider_name)
-                .css({"margine-left" : "1vw", "margin-right" : "1vw"})
-                .attr("target", "_blank")
-                
-            )
-            
-          );
-          // $("ul").append($("<a>").attr( "href", Object.entries(objectRent)[index][1]).text(rental[i].provider_name).attr("target", "_blank"))
-          console.log(Object.entries(objectRent)[index][1]);
+    try {
+      for (var i = 0; i < 4; i++) {
+        // $(".movie-display").append($("<a>").text("RENT: " + rental[i].provider_name))
+        for (
+          var index = 0;
+          index < Object.entries(objectRent).length;
+          index++
+        ) {
+          if (
+            rental[i].provider_name === Object.entries(objectRent)[index][0]
+          ) {
+            $(".rental-header").text("Rental Availability");
+            $(".movie-rent").append(
+              $("<ul>").append(
+                $("<a>")
+                  .attr("href", Object.entries(objectRent)[index][1] + title)
+                  .text(rental[i].provider_name)
+                  .css({ "margine-left": "1vw", "margin-right": "1vw" })
+                  .attr("target", "_blank")
+              )
+            );
+            // $("ul").append($("<a>").attr( "href", Object.entries(objectRent)[index][1]).text(rental[i].provider_name).attr("target", "_blank"))
+            console.log(Object.entries(objectRent)[index][1]);
+          }
         }
       }
+    } catch (erro) {
+      $(".movie-rent").append(
+        $("<div>").text("No known subscription service.")
+      );
     }
-  }catch(erro){
-    $(".movie-rent").append(
-      $("<div>").text("No known subscription service.")
-    )
-  }
   });
 }
 
@@ -233,71 +239,57 @@ function streem(x) {
 
 // Restaurant Code Here
 
-
-
-
-
-
-
-
 $(".food-option").on("click", function (event) {
   $.ajax({
     method: "GET",
-    url:
-    "https://developers.zomato.com/api/v2.1/cities?q=portland",
+    url: "https://developers.zomato.com/api/v2.1/cities?q=portland",
     headers: {
       "user-key": "b23ce13853bea993b459518ec134302f",
       "content-type": "application/json",
     },
   }).then(function (city) {
-    for(var i = 0; i < city.location_suggestions.length; i++){
-      $(".container").append($("<button>")
-      .val(city.location_suggestions[i].id)
-      .text(city.location_suggestions[i].name)
-      .addClass("cityOptions")
-      )
+    for (var i = 0; i < city.location_suggestions.length; i++) {
+      $(".container").append(
+        $("<button>")
+          .val(city.location_suggestions[i].id)
+          .text(city.location_suggestions[i].name)
+          .addClass("cityOptions")
+      );
     }
-    cityIdSnatcher()
+    cityIdSnatcher();
   });
 });
-
-
-
 
 $(".food-option").on("click", function (event) {
-  var cuesineid = $(event.target).
-  $.ajax({
-    method: "GET",
-    url:
-      "https://developers.zomato.com/api/v2.1/search?entity_id=279&entity_type=city&count=20&radius=20%2C000&cuisines=25&sort=rating&order=desc",
-    "https://developers.zomato.com/api/v2.1/search?entity_id=279&entity_type=city&count=20&radius=20%2C000&cuisines=25&sort=rating&order=desc", 
+  var cuesineid = $(event.target)
+    .$.ajax({
+      method: "GET",
+      url:
+        "https://developers.zomato.com/api/v2.1/search?entity_id=279&entity_type=city&count=20&radius=20%2C000&cuisines=25&sort=rating&order=desc",
+      // "https://developers.zomato.com/api/v2.1/search?entity_id=279&entity_type=city&count=20&radius=20%2C000&cuisines=25&sort=rating&order=desc"
 
-
-    headers: {
-      "user-key": "b23ce13853bea993b459518ec134302f",
-      "content-type": "application/json",
-    },
-  }).then(function (response) {
-    console.log(response);
-  });
+      headers: {
+        "user-key": "b23ce13853bea993b459518ec134302f",
+        "content-type": "application/json",
+      },
+    })
+    .then(function (response) {
+      console.log(response);
+    });
 });
-
 
 $(".food-option").on("click", function (event) {
   $.ajax({
     method: "GET",
-    url:
-    "https://developers.zomato.com/api/v2.1/cities?q=sandiego", 
-
+    url: "https://developers.zomato.com/api/v2.1/cities?q=sandiego",
 
     headers: {
       "user-key": "b23ce13853bea993b459518ec134302f",
       "content-type": "application/json",
     },
   }).then(function (city) {
-    for (var i = 0; i < city.location_suggestions.length; i ++)
-    console.log(city.location_suggestions[i].name);
-    $(".restaurants").append$("<button>")
+    for (var i = 0; i < city.location_suggestions.length; i++)
+      console.log(city.location_suggestions[i].name);
+    $(".restaurants").append$("<button>");
   });
 });
-
