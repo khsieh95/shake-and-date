@@ -5,19 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shake n' Date</title>
 
-     <!-- Google fonts -->
-     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Compiled and minified CSS -->
+    <!-- Materialize CSS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-   
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <!-- Header -->
     <div class="header">
@@ -28,8 +35,7 @@
       </div>
       <div class="row save-link">
         <div class="col s12">
-
-            <a class = "hyperlink" href = "saved.html">Saved Dates</a>  
+          <a class="hyperlink" href="saved.html">Saved Dates</a>
         </div>
       </div>
     </div>
@@ -41,11 +47,17 @@
           <!-- 2 columns  -->
           <!-- Column 1 Movie Question-->
           <div class="col s12">
-            <p class="phase1IfYes" id="movie-question">Would you like to watch a movie?</p>
+            <p class="phase1IfYes" id="movie-question">
+              Would you like to watch a movie?
+            </p>
             <!-- <input class="phase1IfYes" type="text" id="prompt1" placeholder="Select Option" /> -->
             <!-- Dropdown Trigger -->
-            <a class="dropdown-trigger btn phase1IfYes" href="#" data-target="dropdown1"
-              >Options</a>
+            <a
+              class="dropdown-trigger btn phase1IfYes"
+              href="#"
+              data-target="dropdown1"
+              >Options</a
+            >
             <!-- Dropdown Structure  -->
             <ul id="dropdown1" class="dropdown-content movieDrop">
               <li><a href="#!" class="yes">Yes</a></li>
@@ -53,24 +65,26 @@
             </ul>
             <!-- Column 2 Genre Prompt -->
             <div class="showMovie">
-              <p id="genre-question">What genre movie would you like to watch?</p>
-              <!-- <input type="text" id="prompt2" placeholder="Select Genre"/> get rid of if changes approved by group--> 
+              <p id="genre-question">
+                What genre movie would you like to watch?
+              </p>
+              <!-- <input type="text" id="prompt2" placeholder="Select Genre"/> get rid of if changes approved by group-->
               <!-- Dropdown Trigger -->
               <a
-              class="dropdown-trigger btn dropdown-genres"
-              href="#"
-              data-target="dropdown2"
-              >Genres</a>
+                class="dropdown-trigger btn dropdown-genres"
+                href="#"
+                data-target="dropdown2"
+                >Genres</a
+              >
               <button
-          class="btn waves-effect waves-light rando"
-          type="submit"
-          name="action"
-          id="submit-button-1"
-          
-          >
-          Random
-        </button>
-              
+                class="btn waves-effect waves-light rando"
+                type="submit"
+                name="action"
+                id="submit-button-1"
+              >
+                Random
+              </button>
+
               <!-- Dropdown Structure  -->
               <ul id="dropdown2" class="dropdown-content genreDropdown">
                 <li><a href="#!" data-id="28">Action</a></li>
@@ -94,28 +108,23 @@
           </div>
         </div>
       </div>
-    </br>
-    </br>
-    
-    <div class="movie-display">
-      <h5 class="movie-title display"></h5>
-      <div class="movie-poster display"></div>
-      <p class="movie-synopsis display" style="text-align: center;"></p>
-      <div class="movie-rating display"></div>
-      <h6 class="streaming-header display"></h6>
-      <div class="movie-stream display"></div>
-      <h6 class="rental-header display"></h6>
-      
-      <div class="movie-rent display"></div>
-    </div>
-    
-     
 
-    <div class="row">
+      <div class="movie-display hide">
+        <h5 class="movie-title display"></h5>
+        <div class="movie-poster display"></div>
+        <p class="movie-synopsis display" style="text-align: center"></p>
+        <div class="movie-rating display"></div>
+        <h6 class="streaming-header display"></h6>
+        <div class="movie-stream display"></div>
+        <h6 class="rental-header display"></h6>
+        <div class="movie-rent display"></div>
+      </div>
+
+      <!-- <div class="row"> -->
       <!-- 1 column -->
       <!-- Column 1 Random Button -->
-      <div class="col s12 random-button-1">
-        <!-- <button
+      <!-- <div class="col s12 random-button-1"> -->
+      <!-- <button
         class="btn waves-effect waves-light rando showMovie"
         type="submit"       get rid of if changes approved by group
         name="action"
@@ -124,25 +133,101 @@
         >
         Random
       </button> -->
-    </div>
-</div>
-</div>
-</div>
+      <!-- </div>
+      </div> -->
 
-<!-- Second Container Restaurants -->
-    <!-- <div class="container"> -->
-      <div class="restaurants">
-        <p class="header-name">Restaurants</p>
+      <div class="location">
+        <p class="header-name">City</p>
         <div class="row">
           <div class="col s12">
-            <p id="restaurant-question">What type of cuisine would you like to eat?</p>
-            <input type="text" id="prompt3" placeholder="Select Cuisine" />
+            <p id="restaurant-question">What city would you like to dine in?</p>
+            <input
+              type="text"
+              id="promptcity"
+              placeholder="Search City"
+              class="search-city"
+            />
+            <!-- Dropdown Trigger -->
+            <a class="btn city-search-btn" data-target="dropdowncity">Search</a>
+            <!-- Dropdown Structure  -->
+            <a
+              class="dropdown-trigger btn city-drop"
+              href="#"
+              data-target="dropdowncity"
+              style="display: none"
+              >Did you Mean:</a
+            >
+            <ul id="dropdowncity" class="dropdown-content city-option"></ul>
+          </div>
+        </div>
+        <p id="cuisine-prompt">Choose a cuisine!</p>
+        <div class="row cuisine-row">
+          <div class="cuisine-button">
             <!-- Dropdown Trigger -->
             <a class="dropdown-trigger btn" href="#" data-target="dropdown3"
-              >Cuisine</a
+              >Here</a
             >
             <!-- Dropdown Structure  -->
             <ul id="dropdown3" class="dropdown-content food-option">
+              <li class="cuisine-types">
+                <a href="#!" data-foodid="1">American</a>
+              </li>
+              <li class="cuisine-types">
+                <a href="#!" data-foodid="25">Chinese</a>
+              </li>
+              <li class="cuisine-types">
+                <a href="#!" data-foodid="156">Greek</a>
+              </li>
+              <li class="cuisine-types">
+                <a href="#!" data-foodid="55">Italian</a>
+              </li>
+              <li class="cuisine-types">
+                <a href="#!" data-foodid="60">Japanese</a>
+              </li>
+              <li class="cuisine-types">
+                <a href="#!" data-foodid="67">Korean</a>
+              </li>
+              <li class="cuisine-types">
+                <a href="#!" data-foodid="73">Mexican</a>
+              </li>
+              <li class="cuisine-types">
+                <a href="#!" data-foodid="99">Vietnamese</a>
+              </li>
+              <li class="cuisine-types">
+                <a href="#!" data-foodid="308">Vegetarian</a>
+              </li>
+              <li class="cuisine-types"><a href="#!">None</a></li>
+            </ul>
+          </div>
+          <button
+            class="btn waves-effect waves-light restaurant-random"
+            type="submit"
+            name="action"
+            id="submit-button-1"
+          >
+            Random
+          </button>
+        </div>
+        <div class="restaurant-display hide"></div>
+      </div>
+    </div>
+
+    <!-- Second Container Restaurants -->
+    <!-- <div class="container"> -->
+    <!-- <div class="restaurants">
+        <p class="header-name">Restaurants</p>
+        <div class="row">
+          <div class="col s12">
+            <p id="restaurant-question">
+              What type of cuisine would you like to eat?
+            </p> -->
+
+    <!-- Dropdown Trigger -->
+    <!-- <a class="dropdown-trigger btn" href="#" data-target="dropdown3"
+              >Cuisine</a
+            > -->
+    <!-- Dropdown Structure -->
+    <!-- <ul id="dropdown3" class="dropdown-content food-option">
               <li><a href="#!" data-foodid="1">American</a></li>
               <li><a href="#!" data-foodid="25">Chinese</a></li>
               <li><a href="#!" data-foodid="156">Greek</a></li>
@@ -153,37 +238,36 @@
               <li><a href="#!" data-foodid="99">Vietnamese</a></li>
               <li><a href="#!" data-foodid="308">Vegetarian</a></li>
               <li><a href="#!">None</a></li>
-              
-            </ul>
+            </ul> -->
+    <!-- </div>
+        </div>
+
+        <div class="restaurant-display">
+          <div class="movie-poster"></div>
+          <div class="movie-synopsis"></div>
+          <div class="movie-rating"></div>
+          <div class="movie-stream"></div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 random-button-2">
+            <button
+              class="btn waves-effect waves-light restaurant-random"
+              type="submit"
+              name="action"
+              id="submit-button-1"
+            >
+              Random
+            </button>
           </div>
         </div>
-      <!-- </div> -->
-  </br>
-  </br>
-  </br>
-  <div class="restaurant-display">
-    <!-- <div class="movie-poster"></div>
-    <div class="movie-synopsis"></div>
-    <div class="movie-rating"></div>
-    <div class="movie-stream"></div> -->
-  </div>
-
-
-      <div class="row">
-        <div class="col s12 random-button-2">
-        <button
-        class="btn waves-effect waves-light restaurant-random"
-        type="submit"
-        name="action"
-        id="submit-button-1"
-        
-        >
-        Random
-        </button>
-        </div>
       </div>
-    </div>
-
+      <div class="next-button">
+        <button class="btn waves-effect waves-light send-button hide">
+          <i class="material-icons next-icon">send</i>
+        </button>
+      </div>
+    </div> -->
     <!--Jquery link-->
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"

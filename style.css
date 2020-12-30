@@ -7,15 +7,16 @@ body {
   background-color: white;
   margin: 0 auto;
   padding: 10px;
+  border-radius: 25px;
 }
-/* Restaurants container */
+/* Restaurants container
 .restaurants {
   margin-top: 5%;
   margin-bottom: 3%;
-}
+} */
 /* Header of containers */
 .header-name {
-  font-size: 30px; 
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   margin: 0 auto;
@@ -24,6 +25,10 @@ body {
 /* Header of page */
 .header {
   background-color: white;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 25px;
 }
 
 /* Save links row */
@@ -52,11 +57,6 @@ body {
 .showMovie {
   display: none;
 }
-/* Random button function 1 */
-.random-button-1 {
-  display: flex;
-  justify-content: center;
-}
 
 .rest-display {
   text-align: center;
@@ -81,7 +81,39 @@ body {
   text-align: center;
 }
 /* For centering movie display items */
-.display{
+.display {
   display: flex;
   justify-content: center;
+}
+
+.movie-display {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.next-button {
+  display: flex;
+  justify-content: center;
+}
+
+#promptcity {
+  width: 30%;
+}
+
+#cuisine-prompt {
+  text-align: center;
+}
+
+.cuisine-row {
+  display: flex;
+  justify-content: center;
+}
+
+.cuisine-button {
+  margin-right: 2px;
+}
+
+.restaurant-random {
+  margin-left: 2px;
 }
