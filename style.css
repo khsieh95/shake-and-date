@@ -8,13 +8,19 @@ body {
   margin: 0 auto;
   padding: 10px;
   border-radius: 25px;
+  margin-bottom: 2%;
+  margin-top: 2%;
 }
-/* Restaurants container
-.restaurants {
-  margin-top: 5%;
-  margin-bottom: 3%;
+
+/* Header of page */
+/* .header {
+  background-color: white;
+  margin-top: 2%;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-radius: 25px;
 } */
-/* Header of containers */
+
 .header-name {
   font-size: 30px;
   font-weight: bold;
@@ -22,38 +28,13 @@ body {
   margin: 0 auto;
 }
 
-/* Header of page */
-.header {
-  background-color: white;
-  margin-top: 2%;
-  margin-left: 2%;
-  margin-right: 2%;
-  border-radius: 25px;
-}
-
-/* Save links row */
-.save-link {
-  width: 71%;
-}
 /* Hyperlink */
 .hyperlink {
-  float: right;
+  text-align: center;
   text-decoration: underline;
+  margin-bottom: 1%;
 }
 
-#hyperlink-back {
-  display: flex;
-  justify-content: center;
-  text-decoration: underline;
-}
-
-/* Question input */
-/* #prompt1,
-#prompt2 {
-  margin-right: 10px;
-  width: 60%;
-} */
-/* Hide movie  */
 .showMovie {
   display: none;
 }
@@ -67,20 +48,10 @@ body {
   text-align: center;
 }
 
-/* Input 3  */
-#prompt3 {
-  margin-right: 10px;
-  width: 50%;
-}
-
 .row {
   text-align: center;
 }
 
-#saved-header {
-  text-align: center;
-}
-/* For centering movie display items */
 .display {
   display: flex;
   justify-content: center;
@@ -116,4 +87,10 @@ body {
 
 .restaurant-random {
   margin-left: 2px;
+}
+
+.streaming-list,
+.rental-list {
+  text-decoration: underline;
+  margin-top: 0;
 }

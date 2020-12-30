@@ -71,7 +71,7 @@ function displayControlMovie() {
     if ($(event.target).attr("class") === "no") {
       $(".movie").hide();
       $(".movie-display").hide();
-      $(".container").prepend($(".location").show());
+      $(".body-container").prepend($(".location").show());
     }
     nextButton.removeClass("hide");
   });
@@ -159,7 +159,7 @@ function streem(x) {
     );
     $("img").attr("height", "320vw");
     $(".movie-synopsis").append(synops);
-    $(".movie-rating").append("Voter Rating: " + voterRate);
+    $(".movie-rating").append(voterRate);
     /////////////////////Streeming And Rental Results/////////////////////////////////
     var subscription = streeming["watch/providers"].results.US.flatrate;
     try {
@@ -173,7 +173,7 @@ function streem(x) {
             subscription[i].provider_name ===
             Object.entries(objectStreem)[index][0]
           ) {
-            $(".streaming-header").text("Subscription Availability");
+            $(".streaming-header").text("Streaming Availability:");
             $(".movie-stream").append(
               $("<ul>").append(
                 $("<a>")
@@ -181,6 +181,7 @@ function streem(x) {
                   .text(subscription[i].provider_name)
                   .css({ "margine-left": "1vw", "margin-right": "1vw" })
                   .attr("target", "_blank")
+                  .addClass("streaming-list")
               )
             );
             console.log(Object.entries(objectStreem)[index][1]);
@@ -204,7 +205,7 @@ function streem(x) {
           if (
             rental[i].provider_name === Object.entries(objectRent)[index][0]
           ) {
-            $(".rental-header").text("Rental Availability");
+            $(".rental-header").text("Rental Availability:");
             $(".movie-rent").append(
               $("<ul>").append(
                 $("<a>")
@@ -212,6 +213,7 @@ function streem(x) {
                   .text(rental[i].provider_name)
                   .css({ "margine-left": "1vw", "margin-right": "1vw" })
                   .attr("target", "_blank")
+                  .addClass("rental-list")
               )
             );
             // $("ul").append($("<a>").attr( "href", Object.entries(objectRent)[index][1]).text(rental[i].provider_name).attr("target", "_blank"))
@@ -269,7 +271,7 @@ $(".city-search-btn").on("click", function (event) {
       );
     }
     $(".cityOptions").on("click", function (event) {
-      $(".container").prepend($(".restaurants").show());
+      $(".body-container").prepend($(".restaurants").show());
       // $(".location").hide();
       var cityId = $(event.target).val();
       $(".food-option").on("click", function (event) {
