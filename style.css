@@ -7,12 +7,13 @@ body {
   background-color: white;
   margin: 0 auto;
   padding: 10px;
+  border-radius: 25px;
 }
-/* Restaurants container */
+/* Restaurants container
 .restaurants {
   margin-top: 5%;
   margin-bottom: 3%;
-}
+} */
 /* Header of containers */
 .header-name {
   font-size: 30px;
@@ -24,6 +25,10 @@ body {
 /* Header of page */
 .header {
   background-color: white;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 25px;
 }
 
 /* Save links row */
@@ -51,11 +56,6 @@ body {
 /* Hide movie  */
 .showMovie {
   display: none;
-}
-/* Random button function 1 */
-.random-button-1 {
-  display: flex;
-  justify-content: center;
 }
 
 .rest-display {
@@ -95,4 +95,25 @@ body {
 .next-button {
   display: flex;
   justify-content: center;
+}
+
+#promptcity {
+  width: 30%;
+}
+
+#cuisine-prompt {
+  text-align: center;
+}
+
+.cuisine-row {
+  display: flex;
+  justify-content: center;
+}
+
+.cuisine-button {
+  margin-right: 2px;
+}
+
+.restaurant-random {
+  margin-left: 2px;
 }
