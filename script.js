@@ -222,7 +222,9 @@ $(".food-option").on("click", function (event) {
   $.ajax({
     method: "GET",
     url:
-      "https://developers.zomato.com/api/v2.1/search?count=20&lat=48.999&lon=-120.893&radius=20%2C000&cuisines=25&sort=rating&order=desc",
+    "https://developers.zomato.com/api/v2.1/search?entity_id=279&entity_type=city&count=20&radius=20%2C000&cuisines=25&sort=rating&order=desc", 
+
+
     headers: {
       "user-key": "b23ce13853bea993b459518ec134302f",
       "content-type": "application/json",
@@ -231,3 +233,23 @@ $(".food-option").on("click", function (event) {
     console.log(response);
   });
 });
+
+
+$(".food-option").on("click", function (event) {
+  $.ajax({
+    method: "GET",
+    url:
+    "https://developers.zomato.com/api/v2.1/cities?q=sandiego", 
+
+
+    headers: {
+      "user-key": "b23ce13853bea993b459518ec134302f",
+      "content-type": "application/json",
+    },
+  }).then(function (city) {
+    for (var i = 0; i < city.location_suggestions.length; i ++)
+    console.log(city.location_suggestions[i].name);
+    $(".restaurants").append$("<button>")
+  });
+});
+
