@@ -5,6 +5,7 @@ $(".dropdown-trigger").dropdown();
 //   console.log(position.coords.longitude)
 // })
 $(".restaurants").hide();
+$(".location").hide();
 
 var nextButton = $(".send-button");
 
@@ -69,7 +70,7 @@ function displayControlMovie() {
     if ($(event.target).attr("class") === "no") {
       $(".movie").hide();
       $(".movie-display").hide();
-      $(".container").append($(".restaurants").show());
+      $(".container").prepend($(".location").show());
     }
     nextButton.removeClass("hide");
   });
@@ -239,57 +240,62 @@ function streem(x) {
 
 // Restaurant Code Here
 
-$(".food-option").on("click", function (event) {
+$(".city-search-btn").on("click", function (event) {
+  $(".city-search-btn").hide();
+  $(".city-drop").show();
+  var searchedCity = $(".search-city").val();
+  var cityUrl =
+    "https://developers.zomato.com/api/v2.1/cities?q=" + searchedCity;
+
   $.ajax({
     method: "GET",
-    url: "https://developers.zomato.com/api/v2.1/cities?q=portland",
+    url: cityUrl,
     headers: {
       "user-key": "b23ce13853bea993b459518ec134302f",
       "content-type": "application/json",
     },
+    //<li><a href="#!" data-foodid="1">American</a></li>
   }).then(function (city) {
     for (var i = 0; i < city.location_suggestions.length; i++) {
-      $(".container").append(
-        $("<button>")
-          .val(city.location_suggestions[i].id)
+      $(".city-option").append(
+        $("<li>")
+          .attr("href", "#!")
           .text(city.location_suggestions[i].name)
           .addClass("cityOptions")
+          .val(city.location_suggestions[i].id)
       );
     }
-    cityIdSnatcher();
-  });
-});
-
-$(".food-option").on("click", function (event) {
-  var cuesineid = $(event.target)
-    .$.ajax({
-      method: "GET",
-      url:
-        "https://developers.zomato.com/api/v2.1/search?entity_id=279&entity_type=city&count=20&radius=20%2C000&cuisines=25&sort=rating&order=desc",
-      // "https://developers.zomato.com/api/v2.1/search?entity_id=279&entity_type=city&count=20&radius=20%2C000&cuisines=25&sort=rating&order=desc"
-
-      headers: {
-        "user-key": "b23ce13853bea993b459518ec134302f",
-        "content-type": "application/json",
-      },
-    })
-    .then(function (response) {
-      console.log(response);
+    $(".cityOptions").on("click", function (event) {
+      $(".container").prepend($(".restaurants").show());
+      $(".location").hide();
+      var cityId = $(event.target).val();
+      $(".food-option").on("click", function (event) {
+        var cuisineid = $(event.target).attr("data-foodid");
+        var cuisineurl =
+          "https://developers.zomato.com/api/v2.1/search?entity_id=" +
+          cityId +
+          "&entity_type=city&count=20&radius=20%2C000&cuisines=" +
+          cuisineid +
+          "&sort=rating&order=desc";
+        console.log(cuisineurl);
+        $.ajax({
+          method: "GET",
+          url: cuisineurl,
+          headers: {
+            "user-key": "b23ce13853bea993b459518ec134302f",
+            "content-type": "application/json",
+          },
+        }).then(function (response) {
+           console.log(response);
+        });
+      });
     });
-});
-
-$(".food-option").on("click", function (event) {
-  $.ajax({
-    method: "GET",
-    url: "https://developers.zomato.com/api/v2.1/cities?q=sandiego",
-
-    headers: {
-      "user-key": "b23ce13853bea993b459518ec134302f",
-      "content-type": "application/json",
-    },
-  }).then(function (city) {
-    for (var i = 0; i < city.location_suggestions.length; i++)
-      console.log(city.location_suggestions[i].name);
-    $(".restaurants").append$("<button>");
   });
 });
+
+function cityIdSnatcher() {
+  $(".cityOptions").on("click", function (event) {
+    var cityId = $(event.target).val();
+    console.log(cityId);
+  });
+}
