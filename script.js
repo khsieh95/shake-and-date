@@ -270,9 +270,10 @@ $(".city-search-btn").on("click", function (event) {
     }
     $(".cityOptions").on("click", function (event) {
       $(".container").prepend($(".restaurants").show());
-      $(".location").hide();
+      // $(".location").hide();
       var cityId = $(event.target).val();
       $(".food-option").on("click", function (event) {
+        $(".restaurant-display").removeClass("hide")
         var cuisineid = $(event.target).attr("data-foodid");
         var cuisineurl =
           "https://developers.zomato.com/api/v2.1/search?entity_id=" +
@@ -288,7 +289,8 @@ $(".city-search-btn").on("click", function (event) {
             "content-type": "application/json",
           },
         }).then(function (response) {
-          var randomeRestaurant = Math.floor(Math.random() * response.restaurants.length)
+          try{
+            var randomeRestaurant = Math.floor(Math.random() * response.restaurants.length)
             console.log(response)
             $(".restaurant-name").text(response.restaurants[randomeRestaurant].restaurant.name);
             $(".restaurant-cuisines").text(response.restaurants[randomeRestaurant].restaurant.cuisines);
@@ -297,9 +299,13 @@ $(".city-search-btn").on("click", function (event) {
             $(".restaurant-rating").text(response.restaurants[randomeRestaurant].restaurant.user_rating.aggregate_rating);
             $(".restaurant-menu").attr("href", response.restaurants[randomeRestaurant].restaurant.menu_url)
             $(".restaurant-menu").text("View Menu")
-            
+            $(".restaurant-menu").attr("target","_blank")
+            $(".restaurant-featuredimage").attr("src", response.restaurants[randomeRestaurant].restaurant.featured_image)////broken?
+            // $(".restaurant-featuredimage").attr("height", "320vw")
             $(".restaurant-contact").text(response.restaurants[randomeRestaurant].restaurant.phone_number);
-            
+          }catch(err){
+            $(".restaurant-name").text("No Restaurants Found!")
+          }
           
            
         });
