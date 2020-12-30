@@ -15,7 +15,7 @@ body {
 }
 /* Header of containers */
 .header-name {
-  font-size: 30px;
+  font-size: 30px; 
   font-weight: bold;
   text-align: center;
   margin: 0 auto;

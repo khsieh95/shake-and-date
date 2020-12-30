@@ -4,6 +4,7 @@ $(".dropdown-trigger").dropdown();
 //   console.log(position.coords.latitude)
 //   console.log(position.coords.longitude)
 // })
+$(".restaurants").hide()
 
 ///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
 function clear() {
@@ -14,6 +15,14 @@ function clear() {
   $(".movie-stream").empty();
   $(".movie-rent").empty();
 }
+//////////////FUNCTION FOR GRABING CITY ID FROM FOOD COURT//////////////////////
+function cityIdSnatcher(){
+  $(".cityOptions").on("click", function(event){
+    var cityId = $(event.target).val()
+    console.log(cityId)
+   })
+  
+  }
 
 var objectStreem = {
   "HBO Max": "https://www.hbomax.com/",
@@ -48,7 +57,7 @@ var objectRent = {
   "AMC on Demand": "https://www.amctheatres.com/on-demand",
 };
 //////////////////// DISPLAYCONTROL PRODUCES ELEMENTS TO THE SCREEN IF CLASS === YES//////////////////
-function displayControl() {
+function displayControlMovie() {
   $(".movieDrop").on("click", function (event) {
     if ($(event.target).attr("class") === "yes") {
       $(".showMovie").css("display", "block");
@@ -56,9 +65,14 @@ function displayControl() {
       $(".random-button-1").css("justify-content", "center");
       $(".phase1IfYes").css("display", "none")
     }
+    if ($(event.target).attr("class") === "no"){
+      $(".movie").hide()
+      $(".movie-display").hide()
+      $(".container").append($(".restaurants").show())
+    }
   });
 }
-displayControl();
+displayControlMovie();
 
 /////////////////////EVENT LISTENER SELECTS RANDOM GENRE AND PLUGS IT INTO STREEM FUNCTION////////////////////////////
 $(".rando").on("click", function () {
@@ -218,11 +232,68 @@ function streem(x) {
 // })
 
 // Restaurant Code Here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $(".food-option").on("click", function (event) {
   $.ajax({
     method: "GET",
     url:
-      "https://developers.zomato.com/api/v2.1/search?count=20&lat=48.999&lon=-120.893&radius=20%2C000&cuisines=25&sort=rating&order=desc",
+    "https://developers.zomato.com/api/v2.1/cities?q=portland",
+    headers: {
+      "user-key": "b23ce13853bea993b459518ec134302f",
+      "content-type": "application/json",
+    },
+  }).then(function (city) {
+    for(var i = 0; i < city.location_suggestions.length; i++){
+      $(".container").append($("<button>")
+      .val(city.location_suggestions[i].id)
+      .text(city.location_suggestions[i].name)
+      .addClass("cityOptions")
+      )
+    }
+    cityIdSnatcher()
+  });
+});
+
+
+
+
+$(".food-option").on("click", function (event) {
+  var cuesineid = $(event.target).
+  $.ajax({
+    method: "GET",
+    url:
+      "https://developers.zomato.com/api/v2.1/search?entity_id=279&entity_type=city&count=20&radius=20%2C000&cuisines=25&sort=rating&order=desc",
     headers: {
       "user-key": "b23ce13853bea993b459518ec134302f",
       "content-type": "application/json",
@@ -231,3 +302,5 @@ $(".food-option").on("click", function (event) {
     console.log(response);
   });
 });
+
+
