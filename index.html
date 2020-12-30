@@ -27,20 +27,22 @@
 
   <body>
     <!-- Header -->
-    <div class="header">
-      <div class="row">
-        <div class="col s12 title-name">
-          <h1>Shake n' Date</h1>
+    <div class="container header-container">
+      <div class="header">
+        <div class="row">
+          <div class="col s12 title-name">
+            <h1>Shake n' Date</h1>
+          </div>
         </div>
-      </div>
-      <div class="row save-link">
-        <div class="col s12">
-          <a class="hyperlink" href="saved.html">Saved Dates</a>
+        <div class="row save-link">
+          <div class="col s12">
+            <a class="hyperlink" href="saved.html">Saved Dates</a>
+          </div>
         </div>
       </div>
     </div>
     <!-- First Container Movie -->
-    <div class="container">
+    <div class="container body-container">
       <div class="movie">
         <p class="header-name">Movie</p>
         <div class="row">
@@ -110,31 +112,31 @@
       </div>
 
       <div class="movie-display hide">
-        <h5 class="movie-title display"></h5>
+        <h5 style="text-decoration: underline" class="movie-title display"></h5>
         <div class="movie-poster display"></div>
+        <hr />
+        <h6 style="text-decoration: underline" class="synopsis-style">
+          Synopsis:
+        </h6>
         <p class="movie-synopsis display" style="text-align: center"></p>
+
+        <h6 style="text-decoration: underline" class="rating-style">
+          Movie Rating:
+        </h6>
         <div class="movie-rating display"></div>
-        <h6 class="streaming-header display"></h6>
+        <hr />
+        <h6
+          style="text-decoration: underline"
+          class="streaming-header display"
+        ></h6>
         <div class="movie-stream display"></div>
-        <h6 class="rental-header display"></h6>
+        <hr />
+        <h6
+          style="text-decoration: underline"
+          class="rental-header display"
+        ></h6>
         <div class="movie-rent display"></div>
       </div>
-
-      <!-- <div class="row"> -->
-      <!-- 1 column -->
-      <!-- Column 1 Random Button -->
-      <!-- <div class="col s12 random-button-1"> -->
-      <!-- <button
-        class="btn waves-effect waves-light rando showMovie"
-        type="submit"       get rid of if changes approved by group
-        name="action"
-        id="submit-button-1"
-        
-        >
-        Random
-      </button> -->
-      <!-- </div>
-      </div> -->
 
       <div class="location">
         <p class="header-name">City</p>
@@ -210,64 +212,13 @@
         </div>
         <div class="restaurant-display hide"></div>
       </div>
-    </div>
-
-    <!-- Second Container Restaurants -->
-    <!-- <div class="container"> -->
-    <!-- <div class="restaurants">
-        <p class="header-name">Restaurants</p>
-        <div class="row">
-          <div class="col s12">
-            <p id="restaurant-question">
-              What type of cuisine would you like to eat?
-            </p> -->
-
-    <!-- Dropdown Trigger -->
-    <!-- <a class="dropdown-trigger btn" href="#" data-target="dropdown3"
-              >Cuisine</a
-            > -->
-    <!-- Dropdown Structure -->
-    <!-- <ul id="dropdown3" class="dropdown-content food-option">
-              <li><a href="#!" data-foodid="1">American</a></li>
-              <li><a href="#!" data-foodid="25">Chinese</a></li>
-              <li><a href="#!" data-foodid="156">Greek</a></li>
-              <li><a href="#!" data-foodid="55">Italian</a></li>
-              <li><a href="#!" data-foodid="60">Japanese</a></li>
-              <li><a href="#!" data-foodid="67">Korean</a></li>
-              <li><a href="#!" data-foodid="73">Mexican</a></li>
-              <li><a href="#!" data-foodid="99">Vietnamese</a></li>
-              <li><a href="#!" data-foodid="308">Vegetarian</a></li>
-              <li><a href="#!">None</a></li>
-            </ul> -->
-    <!-- </div>
-        </div>
-
-        <div class="restaurant-display">
-          <div class="movie-poster"></div>
-          <div class="movie-synopsis"></div>
-          <div class="movie-rating"></div>
-          <div class="movie-stream"></div>
-        </div>
-
-        <div class="row">
-          <div class="col s12 random-button-2">
-            <button
-              class="btn waves-effect waves-light restaurant-random"
-              type="submit"
-              name="action"
-              id="submit-button-1"
-            >
-              Random
-            </button>
-          </div>
-        </div>
-      </div>
       <div class="next-button">
         <button class="btn waves-effect waves-light send-button hide">
           <i class="material-icons next-icon">send</i>
         </button>
       </div>
-    </div> -->
+    </div>
+
     <!--Jquery link-->
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
