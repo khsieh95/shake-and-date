@@ -60,7 +60,7 @@ var objectRent = {
   "AMC on Demand": "https://www.amctheatres.com/on-demand",
 };
 //////////////////// DISPLAYCONTROL PRODUCES ELEMENTS TO THE SCREEN IF CLASS === YES//////////////////
-function displayControlMovie() {
+function displayControl() {
   $(".movieDrop").on("click", function (event) {
     if ($(event.target).attr("class") === "yes") {
       $(".showMovie").css("display", "block");
@@ -76,7 +76,7 @@ function displayControlMovie() {
     nextButton.removeClass("hide");
   });
 }
-displayControlMovie();
+displayControl();
 
 /////////////////////EVENT LISTENER SELECTS RANDOM GENRE AND PLUGS IT INTO STREEM FUNCTION////////////////////////////
 $(".rando").on("click", function () {
@@ -274,6 +274,8 @@ $(".city-search-btn").on("click", function (event) {
       $(".body-container").prepend($(".restaurants").show());
       // $(".location").hide();
       var cityId = $(event.target).val();
+
+    lucky ()
       $(".food-option").on("click", function (event) {
         $(".restaurant-display").removeClass("hide")
         var cuisineid = $(event.target).attr("data-foodid");
@@ -291,7 +293,7 @@ $(".city-search-btn").on("click", function (event) {
             "content-type": "application/json",
           },
         }).then(function (response) {
-          try{
+          try {
             var randomeRestaurant = Math.floor(Math.random() * response.restaurants.length)
             console.log(response)
             $(".restaurant-name").text(response.restaurants[randomeRestaurant].restaurant.name);
@@ -301,24 +303,73 @@ $(".city-search-btn").on("click", function (event) {
             $(".restaurant-rating").text(response.restaurants[randomeRestaurant].restaurant.user_rating.aggregate_rating);
             $(".restaurant-menu").attr("href", response.restaurants[randomeRestaurant].restaurant.menu_url)
             $(".restaurant-menu").text("View Menu")
-            $(".restaurant-menu").attr("target","_blank")
+            $(".restaurant-menu").attr("target", "_blank")
             $(".restaurant-featuredimage").attr("src", response.restaurants[randomeRestaurant].restaurant.featured_image)////broken?
             // $(".restaurant-featuredimage").attr("height", "320vw")
             $(".restaurant-contact").text(response.restaurants[randomeRestaurant].restaurant.phone_number);
-          }catch(err){
+          } catch (err) {
             $(".restaurant-name").text("No Restaurants Found!")
           }
-          
-           
+
+
         });
       });
     });
   });
 });
 
-function cityIdSnatcher() {
-  $(".cityOptions").on("click", function (event) {
-    var cityId = $(event.target).val();
-    console.log(cityId);
+
+  
+
+
+var randomCuisine = ["1", "25", "156", "55", "60", "67", "73", "99", "308"];
+
+
+function lucky (){
+  
+  var cityId = $(event.target).val();
+
+  $(".restaurant-random").on("click", function (){
+    var randomCuisineid = Math.floor(Math.random() * 8)
+    var cuisine = randomCuisine[randomCuisineid]
+    console.log(cuisine);
+    $(".restaurant-display").removeClass("hide")
+    var cuisineurl =
+      "https://developers.zomato.com/api/v2.1/search?entity_id=" +
+      cityId +
+      "&entity_type=city&count=20&radius=20%2C000&cuisines=" +
+      cuisine +
+      "&sort=rating&order=desc";
+    $.ajax({
+      method: "GET",
+      url: cuisineurl,
+      headers: {
+        "user-key": "b23ce13853bea993b459518ec134302f",
+        "content-type": "application/json",
+      },
+    }).then(function (response) {
+      try {
+        var randomeRestaurant = Math.floor(Math.random() * response.restaurants.length)
+        console.log(response)
+        $(".restaurant-name").text(response.restaurants[randomeRestaurant].restaurant.name);
+        $(".restaurant-cuisines").text(response.restaurants[randomeRestaurant].restaurant.cuisines);
+        $(".restaurant-city").text(response.restaurants[randomeRestaurant].restaurant.location.city);
+        $(".restaurant-address").text(response.restaurants[randomeRestaurant].restaurant.location.address);
+        $(".restaurant-rating").text(response.restaurants[randomeRestaurant].restaurant.user_rating.aggregate_rating);
+        $(".restaurant-menu").attr("href", response.restaurants[randomeRestaurant].restaurant.menu_url)
+        $(".restaurant-menu").text("View Menu")
+        $(".restaurant-menu").attr("target", "_blank")
+        $(".restaurant-featuredimage").attr("src", response.restaurants[randomeRestaurant].restaurant.featured_image)////broken?
+        // $(".restaurant-featuredimage").attr("height", "320vw")
+        $(".restaurant-contact").text(response.restaurants[randomeRestaurant].restaurant.phone_number);
+      } catch (err) {
+        $(".restaurant-name").text("No Restaurants Found!")
+      }
+
+
+    });
   });
+
 }
+  
+    
