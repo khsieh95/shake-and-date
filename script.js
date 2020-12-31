@@ -7,8 +7,11 @@ $(".dropdown-trigger").dropdown();
 $(".restaurants").hide();
 $(".location").hide();
 
-var nextButton = $(".send-button");
+var nextButton = $(".next-button");
+var saveMovieButton = $(".save-button1");
+var saveCuisineButton = $(".save-button2");
 var displayMovie = $(".movie-display");
+var buttonRow = $(".buttons");
 
 ///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
 function clear() {
@@ -73,7 +76,6 @@ function displayControl() {
       $(".movie-display").hide();
       $(".body-container").prepend($(".location").show());
     }
-    nextButton.removeClass("hide");
   });
 }
 displayControl();
@@ -115,6 +117,8 @@ $(".rando").on("click", function () {
     streem(movieId);
   });
   displayMovie.removeClass("hide");
+  saveMovieButton.removeClass("hide");
+  buttonRow.removeClass("hide");
 });
 ///////////////////Click Event Targets Genre and plugs in streem Function///////////////////////////
 $(".genreDropdown").on("click", function (event) {
@@ -136,6 +140,8 @@ $(".genreDropdown").on("click", function (event) {
     streem(movieId);
   });
   displayMovie.removeClass("hide");
+  saveMovieButton.removeClass("hide");
+  buttonRow.removeClass("hide");
 });
 
 // Function For Streeming Data//Insert movieId where x is.
@@ -275,9 +281,9 @@ $(".city-search-btn").on("click", function (event) {
       // $(".location").hide();
       var cityId = $(event.target).val();
 
-    lucky ()
+      lucky();
       $(".food-option").on("click", function (event) {
-        $(".restaurant-display").removeClass("hide")
+        $(".restaurant-display").removeClass("hide");
         var cuisineid = $(event.target).attr("data-foodid");
         var cuisineurl =
           "https://developers.zomato.com/api/v2.1/search?entity_id=" +
@@ -294,46 +300,61 @@ $(".city-search-btn").on("click", function (event) {
           },
         }).then(function (response) {
           try {
-            var randomeRestaurant = Math.floor(Math.random() * response.restaurants.length)
-            console.log(response)
-            $(".restaurant-name").text(response.restaurants[randomeRestaurant].restaurant.name);
-            $(".restaurant-cuisines").text(response.restaurants[randomeRestaurant].restaurant.cuisines);
-            $(".restaurant-city").text(response.restaurants[randomeRestaurant].restaurant.location.city);
-            $(".restaurant-address").text(response.restaurants[randomeRestaurant].restaurant.location.address);
-            $(".restaurant-rating").text(response.restaurants[randomeRestaurant].restaurant.user_rating.aggregate_rating);
-            $(".restaurant-menu").attr("href", response.restaurants[randomeRestaurant].restaurant.menu_url)
-            $(".restaurant-menu").text("View Menu")
-            $(".restaurant-menu").attr("target", "_blank")
-            $(".restaurant-featuredimage").attr("src", response.restaurants[randomeRestaurant].restaurant.featured_image)////broken?
+            var randomeRestaurant = Math.floor(
+              Math.random() * response.restaurants.length
+            );
+            console.log(response);
+            $(".restaurant-name").text(
+              response.restaurants[randomeRestaurant].restaurant.name
+            );
+            $(".restaurant-cuisines").text(
+              response.restaurants[randomeRestaurant].restaurant.cuisines
+            );
+            $(".restaurant-city").text(
+              response.restaurants[randomeRestaurant].restaurant.location.city
+            );
+            $(".restaurant-address").text(
+              response.restaurants[randomeRestaurant].restaurant.location
+                .address
+            );
+            $(".restaurant-rating").text(
+              response.restaurants[randomeRestaurant].restaurant.user_rating
+                .aggregate_rating
+            );
+            $(".restaurant-menu").attr(
+              "href",
+              response.restaurants[randomeRestaurant].restaurant.menu_url
+            );
+            $(".restaurant-menu").text("View Menu");
+            $(".restaurant-menu").attr("target", "_blank");
+            $(".restaurant-featuredimage").attr(
+              "src",
+              response.restaurants[randomeRestaurant].restaurant.featured_image
+            ); ////broken?
             // $(".restaurant-featuredimage").attr("height", "320vw")
-            $(".restaurant-contact").text(response.restaurants[randomeRestaurant].restaurant.phone_number);
+            $(".restaurant-contact").text(
+              response.restaurants[randomeRestaurant].restaurant.phone_number
+            );
           } catch (err) {
-            $(".restaurant-name").text("No Restaurants Found!")
+            $(".restaurant-name").text("No Restaurants Found!");
           }
-
-
+          saveCuisineButton.removeClass("hide");
         });
       });
     });
   });
 });
 
-
-  
-
-
 var randomCuisine = ["1", "25", "156", "55", "60", "67", "73", "99", "308"];
 
-
-function lucky (){
-  
+function lucky() {
   var cityId = $(event.target).val();
 
-  $(".restaurant-random").on("click", function (){
-    var randomCuisineid = Math.floor(Math.random() * 8)
-    var cuisine = randomCuisine[randomCuisineid]
+  $(".restaurant-random").on("click", function () {
+    var randomCuisineid = Math.floor(Math.random() * 8);
+    var cuisine = randomCuisine[randomCuisineid];
     console.log(cuisine);
-    $(".restaurant-display").removeClass("hide")
+    $(".restaurant-display").removeClass("hide");
     var cuisineurl =
       "https://developers.zomato.com/api/v2.1/search?entity_id=" +
       cityId +
@@ -349,27 +370,66 @@ function lucky (){
       },
     }).then(function (response) {
       try {
-        var randomeRestaurant = Math.floor(Math.random() * response.restaurants.length)
-        console.log(response)
-        $(".restaurant-name").text(response.restaurants[randomeRestaurant].restaurant.name);
-        $(".restaurant-cuisines").text(response.restaurants[randomeRestaurant].restaurant.cuisines);
-        $(".restaurant-city").text(response.restaurants[randomeRestaurant].restaurant.location.city);
-        $(".restaurant-address").text(response.restaurants[randomeRestaurant].restaurant.location.address);
-        $(".restaurant-rating").text(response.restaurants[randomeRestaurant].restaurant.user_rating.aggregate_rating);
-        $(".restaurant-menu").attr("href", response.restaurants[randomeRestaurant].restaurant.menu_url)
-        $(".restaurant-menu").text("View Menu")
-        $(".restaurant-menu").attr("target", "_blank")
-        $(".restaurant-featuredimage").attr("src", response.restaurants[randomeRestaurant].restaurant.featured_image)////broken?
+        var randomeRestaurant = Math.floor(
+          Math.random() * response.restaurants.length
+        );
+        console.log(response);
+        $(".restaurant-name").text(
+          response.restaurants[randomeRestaurant].restaurant.name
+        );
+        $(".restaurant-cuisines").text(
+          response.restaurants[randomeRestaurant].restaurant.cuisines
+        );
+        $(".restaurant-city").text(
+          response.restaurants[randomeRestaurant].restaurant.location.city
+        );
+        $(".restaurant-address").text(
+          response.restaurants[randomeRestaurant].restaurant.location.address
+        );
+        $(".restaurant-rating").text(
+          response.restaurants[randomeRestaurant].restaurant.user_rating
+            .aggregate_rating
+        );
+        $(".restaurant-menu").attr(
+          "href",
+          response.restaurants[randomeRestaurant].restaurant.menu_url
+        );
+        $(".restaurant-menu").text("View Menu");
+        $(".restaurant-menu").attr("target", "_blank");
+        $(".restaurant-featuredimage").attr(
+          "src",
+          response.restaurants[randomeRestaurant].restaurant.featured_image
+        ); ////broken?
         // $(".restaurant-featuredimage").attr("height", "320vw")
-        $(".restaurant-contact").text(response.restaurants[randomeRestaurant].restaurant.phone_number);
+        $(".restaurant-contact").text(
+          response.restaurants[randomeRestaurant].restaurant.phone_number
+        );
       } catch (err) {
-        $(".restaurant-name").text("No Restaurants Found!")
+        $(".restaurant-name").text("No Restaurants Found!");
       }
-
-
     });
+    saveCuisineButton.removeClass("hide");
   });
-
 }
-  
-    
+
+////////////////// SAVE BUTTON FUNCTIONS.....WILL USE FOR LOCAL STORAGE////////////////////////
+function saveMovie() {
+  saveMovieButton.on("click", function () {
+    saveMovieButton.hide();
+    $(".movie").hide();
+    $(".movie-display").hide();
+    $(".body-container").prepend($(".location").show());
+  });
+}
+saveMovie();
+
+function saveCuisine() {
+  saveCuisineButton.on("click", function () {
+    console.log("hi");
+    saveCuisineButton.hide();
+    $(".location").hide();
+    $(".final-date").removeClass("hide");
+    $(".buttons").remove();
+  });
+}
+saveCuisine();

@@ -63,11 +63,6 @@ body {
   margin: 0 auto;
 }
 
-.next-button {
-  display: flex;
-  justify-content: center;
-}
-
 #promptcity {
   width: 30%;
 }
@@ -93,4 +88,14 @@ body {
 .rental-list {
   text-decoration: underline;
   margin-top: 0;
+}
+
+.next-button,
+.save-button {
+  text-align: center;
+}
+
+.final-header {
+  text-align: center;
+  margin: 0 auto;
 }
