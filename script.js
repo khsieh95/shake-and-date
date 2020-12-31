@@ -11,6 +11,7 @@ var nextButton = $(".next-button");
 var saveMovieButton = $(".save-button1");
 var saveCuisineButton = $(".save-button2");
 var displayMovie = $(".movie-display");
+var buttonRow = $(".buttons");
 
 ///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
 function clear() {
@@ -117,6 +118,7 @@ $(".rando").on("click", function () {
   });
   displayMovie.removeClass("hide");
   saveMovieButton.removeClass("hide");
+  buttonRow.removeClass("hide");
 });
 ///////////////////Click Event Targets Genre and plugs in streem Function///////////////////////////
 $(".genreDropdown").on("click", function (event) {
@@ -139,6 +141,7 @@ $(".genreDropdown").on("click", function (event) {
   });
   displayMovie.removeClass("hide");
   saveMovieButton.removeClass("hide");
+  buttonRow.removeClass("hide");
 });
 
 // Function For Streeming Data//Insert movieId where x is.
@@ -409,12 +412,12 @@ function lucky() {
   });
 }
 
-////////////////// SAVE BUTTON FUNCTION.....WILL USE FOR LOCAL STORAGE////////////////////////
+////////////////// SAVE BUTTON FUNCTIONS.....WILL USE FOR LOCAL STORAGE////////////////////////
 function saveMovie() {
   saveMovieButton.on("click", function () {
     saveMovieButton.hide();
     $(".movie").hide();
-    $(".restaurant-display").hide();
+    $(".movie-display").hide();
     $(".body-container").prepend($(".location").show());
   });
 }
