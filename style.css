@@ -1,11 +1,11 @@
 body {
-  background-color: lightblue;
+  /* background-color: lightblue; */
   font-family: "Playfair Display", serif;
+  background-image: linear-gradient(black, white);
 }
 button {
   font-family: "Playfair Display", serif;
 }
-
 /* Movie container */
 .container {
   background-color: white;
@@ -15,90 +15,68 @@ button {
   margin-bottom: 2%;
   margin-top: 2%;
 }
-
-/* Header of page */
-/* .header {
-  background-color: white;
-  margin-top: 2%;
-  margin-left: 15%;
-  margin-right: 15%;
-  border-radius: 25px;
-} */
-
 .header-name {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
   margin: 0 auto;
 }
-
 /* Hyperlink */
 .hyperlink {
   text-align: center;
   text-decoration: underline;
   margin-bottom: 1%;
 }
-
 .showMovie {
   display: none;
 }
-
 .rest-display {
   text-align: center;
 }
-
 /* Prompt question for restaurant */
 #restaurant-question {
   text-align: center;
 }
-
 .row {
   text-align: center;
 }
-
 .display {
   display: flex;
   justify-content: center;
 }
-
 .movie-display {
   width: 50%;
   text-align: center;
   margin: 0 auto;
 }
-
 #promptcity {
   width: 30%;
 }
-
 #cuisine-prompt {
   text-align: center;
 }
-
 .cuisine-row {
   display: flex;
   justify-content: center;
 }
-
 .cuisine-button {
   margin-right: 2px;
 }
-
 .restaurant-random {
   margin-left: 2px;
 }
-
 .streaming-list,
 .rental-list {
   text-decoration: underline;
   margin-top: 0;
 }
-
-.next-button,
-.save-button {
+.save-button1,
+.save-button2 {
   text-align: center;
 }
-
+.clear-button {
+  text-align: center;
+}
 .final-header {
   text-align: center;
   margin: 0 auto;
