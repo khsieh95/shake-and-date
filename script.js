@@ -7,7 +7,6 @@ $(".dropdown-trigger").dropdown();
 $(".restaurants").hide();
 $(".location").hide();
 
-var nextButton = $(".next-button");
 var saveMovieButton = $(".save-button1");
 var saveCuisineButton = $(".save-button2");
 var displayMovie = $(".movie-display");
