@@ -18,21 +18,36 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
 
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container header-containter">
       <div class="header">
         <div class="row">
           <div class="col s12 title-name">
             <h1>Save n' Date</h1>
           </div>
+          <div id="gitsum"></div>
         </div>
         <div class="row save-link">
           <div class="col s12">
             <a class="hyperlink" href="index.html">Take Me Back</a>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="container final-container">
+      <div class="saved-div"></div>
+      <div class="clear-button">
+        <button class="btn waves-effect waves-light clear-history-button">
+          Clear
+          <i class="material-icons right">clear</i>
+        </button>
       </div>
     </div>
 

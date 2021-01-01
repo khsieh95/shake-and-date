@@ -1,7 +1,12 @@
 body {
-  background-color: lightblue;
+  /* background-color: lightblue; */
+  font-family: "Playfair Display", serif;
+  background-image: linear-gradient(black, white);
+}
+button {
   font-family: "Playfair Display", serif;
 }
+
 /* Movie container */
 .container {
   background-color: white;
@@ -11,15 +16,6 @@ body {
   margin-bottom: 2%;
   margin-top: 2%;
 }
-
-/* Header of page */
-/* .header {
-  background-color: white;
-  margin-top: 2%;
-  margin-left: 15%;
-  margin-right: 15%;
-  border-radius: 25px;
-} */
 
 .header-name {
   font-size: 30px;
@@ -90,8 +86,12 @@ body {
   margin-top: 0;
 }
 
-.next-button,
-.save-button {
+.save-button1,
+.save-button2 {
+  text-align: center;
+}
+
+.clear-button {
   text-align: center;
 }
 
