@@ -2,6 +2,10 @@ body {
   background-color: lightblue;
   font-family: "Playfair Display", serif;
 }
+button {
+  font-family: "Playfair Display", serif;
+}
+
 /* Movie container */
 .container {
   background-color: white;
