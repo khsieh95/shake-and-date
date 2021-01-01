@@ -4,32 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Save n' Date</title>
-
+    ​
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap"
       rel="stylesheet"
     />
-
+    ​
     <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-
+    ​
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    ​
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container header-containter">
       <div class="header">
         <div class="row">
           <div class="col s12 title-name">
             <h1>Save n' Date</h1>
           </div>
-          <div id="gitsum">
-
-          </div>
+          <div id="gitsum"></div>
         </div>
         <div class="row save-link">
           <div class="col s12">
@@ -38,7 +41,16 @@
         </div>
       </div>
     </div>
-
+    <div class="container final-container">
+      <div class="saved-div"></div>
+      <div class="clear-button">
+        <button class="btn waves-effect waves-light clear-history-button">
+          Clear
+          <i class="material-icons right">clear</i>
+        </button>
+      </div>
+    </div>
+    ​
     <!--Jquery link-->
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
