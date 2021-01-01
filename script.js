@@ -187,6 +187,7 @@ function streem(x) {
             subscription[i].provider_name ===
             Object.entries(objectStreem)[index][0]
           ) {
+            movieArray.push(Object.entries(objectStreem)[index][1], subscription[i].provider_name)
             $(".streaming-header").text("Streaming Availability:");
             $(".movie-stream").append(
               $("<ul>").append(
@@ -481,21 +482,42 @@ function saveCuisine() {
 }
 saveCuisine();
 
-for ( var i = restaurantStorage.length -1 ; i >= 0; i--){
+// for ( var i = restaurantStorage.length -1 ; i >= 0; i--){
+//   $(".test").append($("<div>").addClass("savedDate" + i))
+//   console.log(restaurantStorage[i])
+//   $(".savedDate" + i).css("display", "flex")
+//   $(".savedDate" + i).css("justify-content", "center")
+//   $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][0]).addClass("name"))
+//   $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][1]).addClass("type"))
+//   $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][2]).addClass("city"))
+//   $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][3]).addClass("address"))
+//   $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][4]).addClass("rating"))
+//   $(".savedDate" + i).append($("<a>").text("View Menu").addClass("menu").attr("href", restaurantStorage[i][5]).attr("target", "_blank"))
+//   // $(".savedDate" + i).append($("<img>").attr("src", restaurantStorage[i][6]).addClass("image"))
+//   $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][7]).addClass("number"))
+  
+//   }
+  
+for ( var i = movieStorage.length -1 ; i >= 0; i--){
   $(".test").append($("<div>").addClass("savedDate" + i))
-  console.log(restaurantStorage[i])
+  console.log(movieStorage[i])
   $(".savedDate" + i).css("display", "flex")
   $(".savedDate" + i).css("justify-content", "center")
-  $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][0]).addClass("name"))
-  $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][1]).addClass("type"))
-  $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][2]).addClass("city"))
-  $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][3]).addClass("address"))
-  $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][4]).addClass("rating"))
-  $(".savedDate" + i).append($("<a>").text("View Menu").addClass("menu").attr("href", restaurantStorage[i][5]).attr("target", "_blank"))
-  // $(".savedDate" + i).append($("<img>").attr("src", restaurantStorage[i][6]).addClass("image"))
-  $(".savedDate" + i).append($("<div>").text(restaurantStorage[i][7]).addClass("number"))
+  $(".savedDate" + i).append($("<img>").attr("src", "https://image.tmdb.org/t/p/w500" + movieStorage[i][0]).addClass("poster"))
+  $("img").attr("height", "320vw")
+  $(".savedDate" + i).append($("<div>").text(movieStorage[i][1]).addClass("title"))
+  $(".savedDate" + i).append($("<div>").text(movieStorage[i][2]).addClass("synops"))
+  $(".savedDate" + i).append($("<div>").text(movieStorage[i][3]).addClass("rating"))
+
+  $(".savedDate" + i).append($("<div>").text("For Rent"))
+  $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -8]).text(movieStorage[i][movieStorage[i].length -7).addClass("yam"))
+  $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -6]).text(movieStorage[i][movieStorage[i].length -5).addClass("tech"))
+  $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -4]).text(movieStorage[i][movieStorage[i].length -3).addClass("tix"))
+  $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -2]).text(movieStorage[i][movieStorage[i].length -1).addClass("tox"))
   
   }
+  
+
 
 
 // $(".gitSum").append($("<div>").addClass("col s4 card"))
