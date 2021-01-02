@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shake n' Date</title>
-
+    ​
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap"
       rel="stylesheet"
     />
-
+    
     <!-- Materialize CSS -->
     <link
       rel="stylesheet"
@@ -21,10 +21,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-
+    ​
     <link rel="stylesheet" href="style.css" />
   </head>
-
+  ​
   <body>
     <!-- Header -->
     <div class="container header-container">
@@ -44,22 +44,24 @@
     <!-- First Container Movie -->
     <div class="container body-container">
       <div class="final-date hide">
-        <h2 style="text-decoration: underline" class="final-header">Here's your date!</h2>
+        <h2 style="text-decoration: underline" class="final-header">
+          Here's your date!
+        </h2>
       </div>
       <div class="movie">
-        <p class="header-name">Movie</p>
-        <hr>
+        <p class="header-name final-save">Movie</p>
+        ​
         <div class="row">
           <!-- 2 columns  -->
           <!-- Column 1 Movie Question-->
           <div class="col s12">
-            <p class="phase1IfYes" id="movie-question">
+            <p class="phase1IfYes final-save" id="movie-question">
               Would you like to watch a movie?
             </p>
             <!-- <input class="phase1IfYes" type="text" id="prompt1" placeholder="Select Option" /> -->
             <!-- Dropdown Trigger -->
             <a
-              class="dropdown-trigger btn phase1IfYes"
+              class="dropdown-trigger btn phase1IfYes final-save"
               href="#"
               data-target="dropdown1"
               >Options</a
@@ -90,7 +92,7 @@
               >
                 Random
               </button>
-
+              ​
               <!-- Dropdown Structure  -->
               <ul id="dropdown2" class="dropdown-content genreDropdown">
                 <li><a href="#!" data-id="28">Action</a></li>
@@ -114,7 +116,7 @@
           </div>
         </div>
       </div>
-
+      ​
       <div class="movie-display hide">
         <h5 style="text-decoration: underline" class="movie-title display"></h5>
         <div class="movie-poster display"></div>
@@ -123,7 +125,7 @@
           Synopsis:
         </h6>
         <p class="movie-synopsis display" style="text-align: center"></p>
-
+        ​
         <h6 style="text-decoration: underline" class="rating-style">
           Movie Rating:
         </h6>
@@ -141,12 +143,14 @@
         ></h6>
         <div class="movie-rent display"></div>
       </div>
-
+      ​
       <div class="location">
         <p class="header-name final-save">City</p>
         <div class="row">
           <div class="col s12">
-            <p class="final-save" id="restaurant-question">What city would you like to dine in?</p>
+            <p class="final-save" id="restaurant-question">
+              What city would you like to dine in?
+            </p>
             <input
               type="text"
               id="promptcity"
@@ -154,7 +158,9 @@
               class="search-city final-save"
             />
             <!-- Dropdown Trigger -->
-            <a class="btn final-save city-search-btn" data-target="dropdowncity">Search</a>
+            <a class="btn final-save city-search-btn" data-target="dropdowncity"
+              >Search</a
+            >
             <!-- Dropdown Structure  -->
             <a
               class="dropdown-trigger final-save btn city-drop"
@@ -170,7 +176,10 @@
         <div class="row cuisine-row">
           <div class="cuisine-button">
             <!-- Dropdown Trigger -->
-            <a class="dropdown-trigger btn final-save" href="#" data-target="dropdown3"
+            <a
+              class="dropdown-trigger btn final-save cuisineSelector"
+              href="#"
+              data-target="dropdown3"
               >Here</a
             >
             <!-- Dropdown Structure  -->
@@ -179,28 +188,28 @@
                 <a href="#!" data-foodid="1">American</a>
               </li>
               <li class="cuisine-types">
-                <a href="#!" data-foodid="25">Chinese</a>
+                <a class ="buttonwordswitch" href="#!" data-foodid="25">Chinese</a>
               </li>
               <li class="cuisine-types">
-                <a href="#!" data-foodid="156">Greek</a>
+                <a class ="buttonwordswitch" href="#!" data-foodid="156">Greek</a>
               </li>
               <li class="cuisine-types">
-                <a href="#!" data-foodid="55">Italian</a>
+                <a class ="buttonwordswitch" href="#!" data-foodid="55">Italian</a>
               </li>
               <li class="cuisine-types">
-                <a href="#!" data-foodid="60">Japanese</a>
+                <a class ="buttonwordswitch" href="#!" data-foodid="60">Japanese</a>
               </li>
               <li class="cuisine-types">
-                <a href="#!" data-foodid="67">Korean</a>
+                <a class ="buttonwordswitch" href="#!" data-foodid="67">Korean</a>
               </li>
               <li class="cuisine-types">
-                <a href="#!" data-foodid="73">Mexican</a>
+                <a class ="buttonwordswitch" href="#!" data-foodid="73">Mexican</a>
               </li>
               <li class="cuisine-types">
-                <a href="#!" data-foodid="99">Vietnamese</a>
+                <a class ="buttonwordswitch" href="#!" data-foodid="99">Vietnamese</a>
               </li>
               <li class="cuisine-types">
-                <a href="#!" data-foodid="308">Vegetarian</a>
+                <a class ="buttonwordswitch" href="#!" data-foodid="308">Vegetarian</a>
               </li>
               <li class="cuisine-types"><a href="#!">None</a></li>
             </ul>
@@ -225,8 +234,7 @@
           <div class="restaurant-contact display"></div>
         </div>
       </div>
-      </br>
-      <div class="row buttons hide">
+      <div class="row movie-save-row hide">
         <div class="col s12">
           <div class="save-button1 hide">
             <button class="btn waves-effect waves-light">
@@ -236,7 +244,7 @@
           </div>
         </div>
       </div>
-      <div class="row buttons hide">
+      <div class="row restaurant-save-row hide">
         <div class="col s12">
           <div class="save-button2 hide">
             <button class="btn waves-effect waves-light">
@@ -250,8 +258,8 @@
         <h2 style="text-decoration: underline" class="final-header">Here's your date!</h2>
       </div> -->
     </div>
-    <div class="test"></div>
-
+    <!-- <div class="test"></div> -->
+    ​
     <!--Jquery link-->
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
