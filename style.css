@@ -81,3 +81,17 @@ button {
   text-align: center;
   margin: 0 auto;
 }
+
+.saved-div {
+  text-align: center;
+  margin: 0 auto;
+  width: 40vw;
+}
+
+.card-display {
+  margin: 2% 2%;
+}
+
+.number {
+  padding-bottom: 2%;
+}

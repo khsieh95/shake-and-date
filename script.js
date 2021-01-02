@@ -84,7 +84,7 @@ function displayControl() {
       $(".movie").hide();
       $(".movie-display").hide();
       $(".body-container").prepend($(".location").show());
-      movieStorage.push(" ")
+      movieStorage.push(" ");
     }
   });
 }
@@ -191,7 +191,10 @@ function streem(x) {
             subscription[i].provider_name ===
             Object.entries(objectStreem)[index][0]
           ) {
-            movieArray.push(Object.entries(objectStreem)[index][1], subscription[i].provider_name)
+            movieArray.push(
+              Object.entries(objectStreem)[index][1],
+              subscription[i].provider_name
+            );
             $(".streaming-header").text("Streaming Availability:");
             $(".movie-stream").append(
               $("<ul>").append(
@@ -296,12 +299,12 @@ $(".city-search-btn").on("click", function (event) {
       var cityId = $(event.target).val();
       console.log(cityId);
       console.log(city);
-      $(".search-city").val($(event.target).text())
+      $(".search-city").val($(event.target).text());
 
       lucky();
       $(".food-option").on("click", function (event) {
         $(".restaurant-display").removeClass("hide");
-        $(".cuisineSelector").text($(event.target).text())
+        $(".cuisineSelector").text($(event.target).text());
         var cuisineid = $(event.target).attr("data-foodid");
         cuisineurl =
           "https://developers.zomato.com/api/v2.1/search?entity_id=" +
@@ -348,7 +351,7 @@ $(".city-search-btn").on("click", function (event) {
             var establishmentImg =
               response.restaurants[randomeRestaurant].restaurant.featured_image;
             $(".restaurant-featuredimage").attr("src", establishmentImg);
-            $(".restaurant-featuredimage").attr("height", "200vw")
+            $(".restaurant-featuredimage").attr("height", "200vw");
             var establishmentContact =
               response.restaurants[randomeRestaurant].restaurant.phone_numbers;
             $(".restaurant-contact").text(establishmentContact);
@@ -426,8 +429,8 @@ function lucky() {
         var establishmentImg =
           response.restaurants[randomeRestaurant].restaurant.featured_image;
         $(".restaurant-featuredimage").attr("src", establishmentImg);
-        $(".restaurant-featuredimage").attr("height", "200vw")
-        $(".restaurant-featuredimage").attr("margin", "0vw")
+        $(".restaurant-featuredimage").attr("height", "200vw");
+        $(".restaurant-featuredimage").attr("margin", "0vw");
         var establishmentContact =
           response.restaurants[randomeRestaurant].restaurant.phone_numbers;
         $(".restaurant-contact").text(establishmentContact);
@@ -446,7 +449,7 @@ function lucky() {
       ];
       restaurantStorage.push(restArray);
     });
-    saveCuisineButton.removeClass("hide");
+    saveCuisineButton.removeClass("hide").prepend($("<br>"));
   });
 }
 
@@ -472,7 +475,7 @@ function saveCuisine() {
     $("#genre-question").hide(); //
     $(".dropdown-genres").hide(); //
     $(".body-container").prepend($(".final-date").removeClass("hide"));
-    $(".movie").show();  
+    $(".movie").show();
     $(".movie-display").show();
     $(".buttons").remove();
     $(".final-save").hide();
@@ -482,63 +485,99 @@ function saveCuisine() {
 }
 saveCuisine();
 
-
-  // $(".savedDate" + i).append($("<div>").text("For Rent"))
-  // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -8]).text(movieStorage[i][movieStorage[i].length -7]).addClass("yam"))
-  // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -6]).text(movieStorage[i][movieStorage[i].length -5]).addClass("tech"))
-  // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -4]).text(movieStorage[i][movieStorage[i].length -3]).addClass("tix"))
-  // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -2]).text(movieStorage[i][movieStorage[i].length -1]).addClass("tox"))
-  
-  
+// $(".savedDate" + i).append($("<div>").text("For Rent"))
+// $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -8]).text(movieStorage[i][movieStorage[i].length -7]).addClass("yam"))
+// $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -6]).text(movieStorage[i][movieStorage[i].length -5]).addClass("tech"))
+// $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -4]).text(movieStorage[i][movieStorage[i].length -3]).addClass("tix"))
+// $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -2]).text(movieStorage[i][movieStorage[i].length -1]).addClass("tox"))
 
 for (var i = restaurantStorage.length - 1; i >= 0; i--) {
   var savedCard = $("<div>")
     .addClass("card")
     .addClass("savedDate" + i);
   console.log(restaurantStorage[i]);
-  savedCard.css("display", "flex");
-  savedCard.css("justify-content", "center");
-  savedCard.append($("<div>").text(restaurantStorage[i][0]).addClass("name"));
-  savedCard.append($("<div>").text(restaurantStorage[i][1]).addClass("type"));
-  savedCard.append($("<div>").text(restaurantStorage[i][2]).addClass("city"));
   savedCard.append(
-    $("<div>").text(restaurantStorage[i][3]).addClass("address")
+    $("<p>")
+      .text("Name: " + restaurantStorage[i][0])
+      .addClass("name card-display")
   );
-  savedCard.append($("<div>").text(restaurantStorage[i][4]).addClass("rating"));
+  savedCard.append(
+    $("<p>")
+      .text("Cuisine: " + restaurantStorage[i][1])
+      .addClass("type card-display")
+  );
+  // savedCard.append(
+  //   $("<p>")
+  //     .text("City: " + restaurantStorage[i][2])
+  //     .addClass("city")
+  // );
+  savedCard.append(
+    $("<p>")
+      .text("Address: " + restaurantStorage[i][3])
+      .addClass("address card-display")
+  );
+  savedCard.append(
+    $("<p>")
+      .text("Rating: " + restaurantStorage[i][4])
+      .addClass("rating card-display")
+  );
   savedCard.append(
     $("<a>")
       .text("View Menu")
-      .addClass("menu")
+      .addClass("menu card-display")
       .attr("href", restaurantStorage[i][5])
       .attr("target", "_blank")
   );
   // savedCard.append($("<img>").attr("src", restaurantStorage[i][6]).addClass("image"))
-  savedCard.append($("<div>").text(restaurantStorage[i][7]).addClass("number"));
+  savedCard.append(
+    $("<p>").text(restaurantStorage[i][7]).addClass("number card-display")
+  );
+  var savedMovie = $("<div>").addClass("savedDate" + i);
+  savedMovie.append(
+    $("<img>")
+      .attr("height", "200vw")
+      .attr("src", "https://image.tmdb.org/t/p/w500" + movieStorage[i][0])
+      .addClass("poster card-display")
+  );
+  savedMovie.append(
+    $("<p>")
+      .text("Title: " + movieStorage[i][1])
+      .addClass("title card-display")
+  );
+  savedMovie.append(
+    $("<p>")
+      .text("Synopsis: " + movieStorage[i][2])
+      .addClass("synops card-display")
+      .append($("<hr>"))
+  );
+  // savedMovie.append(
+  //   $("<p>")
+  //     .text("Rating: " + movieStorage[i][3])
+  //     .addClass("rating")
+  // );
+  savedCard.prepend(savedMovie);
+  // savedDiv.prepend(savedMovie)
+  // savedContainer.prepend(savedDiv)
   savedDiv.prepend(savedCard);
   savedContainer.prepend(savedDiv);
-  
 }
 
+// for ( var i = movieStorage.length -1 ; i >= 0; i--){
 
-for ( var i = movieStorage.length -1 ; i >= 0; i--){
-  
-    if (movieStorage[i].length > 1 ){          //////////////////////////////////////added to prevent error.....if creates error okay to remove..........
-    var savedMovie = $("<div>")
-    .addClass("savedDate" + i)
-  // savedCard.css("display", "flex");
-  // savedCard.css("justify-content", "center");
-  savedMovie.append($("<img>").attr("height", "200vw").attr("src", "https://image.tmdb.org/t/p/w500" + movieStorage[i][0]).addClass("poster"))
-  savedMovie.append($("<div>").text(movieStorage[i][1]).addClass("title"));
-  savedMovie.append($("<div>").text(movieStorage[i][2]).addClass("synops"));
-  savedMovie.append($("<div>").text(movieStorage[i][3]).addClass("rating"));
-  // savedCard.append(savedMovie)
-  savedDiv.prepend(savedMovie)
-  // savedContainer.prepend(savedDiv)
-}
-}
-
-
-
+//     if (movieStorage[i].length > 1 ){          //////////////////////////////////////added to prevent error.....if creates error okay to remove..........
+//     var savedMovie = $("<div>")
+//     .addClass("savedDate" + i)
+//   // savedCard.css("display", "flex");
+//   // savedCard.css("justify-content", "center");
+//   savedMovie.append($("<img>").attr("height", "200vw").attr("src", "https://image.tmdb.org/t/p/w500" + movieStorage[i][0]).addClass("poster"))
+//   savedMovie.append($("<div>").text(movieStorage[i][1]).addClass("title"));
+//   savedMovie.append($("<div>").text(movieStorage[i][2]).addClass("synops"));
+//   savedMovie.append($("<div>").text(movieStorage[i][3]).addClass("rating"));
+//   // savedCard.append(savedMovie)
+//   savedDiv.prepend(savedMovie)
+//   // savedContainer.prepend(savedDiv)
+// }
+// }
 
 //////////////////// CLEAR BUTTON FUNCTION SAVED.HTML //////////////////
 function clearHistory() {
