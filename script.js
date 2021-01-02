@@ -84,6 +84,7 @@ function displayControl() {
       $(".movie").hide();
       $(".movie-display").hide();
       $(".body-container").prepend($(".location").show());
+      movieStorage.push(" ")
     }
   });
 }
@@ -190,6 +191,7 @@ function streem(x) {
             subscription[i].provider_name ===
             Object.entries(objectStreem)[index][0]
           ) {
+            movieArray.push(Object.entries(objectStreem)[index][1], subscription[i].provider_name)
             $(".streaming-header").text("Streaming Availability:");
             $(".movie-stream").append(
               $("<ul>").append(
@@ -294,10 +296,12 @@ $(".city-search-btn").on("click", function (event) {
       var cityId = $(event.target).val();
       console.log(cityId);
       console.log(city);
+      $(".search-city").val($(event.target).text())
 
       lucky();
       $(".food-option").on("click", function (event) {
         $(".restaurant-display").removeClass("hide");
+        $(".cuisineSelector").text($(event.target).text())
         var cuisineid = $(event.target).attr("data-foodid");
         cuisineurl =
           "https://developers.zomato.com/api/v2.1/search?entity_id=" +
@@ -344,7 +348,7 @@ $(".city-search-btn").on("click", function (event) {
             var establishmentImg =
               response.restaurants[randomeRestaurant].restaurant.featured_image;
             $(".restaurant-featuredimage").attr("src", establishmentImg);
-            // $(".restaurant-featuredimage").attr("height", "320vw")
+            $(".restaurant-featuredimage").attr("height", "200vw")
             var establishmentContact =
               response.restaurants[randomeRestaurant].restaurant.phone_numbers;
             $(".restaurant-contact").text(establishmentContact);
@@ -422,7 +426,8 @@ function lucky() {
         var establishmentImg =
           response.restaurants[randomeRestaurant].restaurant.featured_image;
         $(".restaurant-featuredimage").attr("src", establishmentImg);
-        // $(".restaurant-featuredimage").attr("height", "320vw")
+        $(".restaurant-featuredimage").attr("height", "200vw")
+        $(".restaurant-featuredimage").attr("margin", "0vw")
         var establishmentContact =
           response.restaurants[randomeRestaurant].restaurant.phone_numbers;
         $(".restaurant-contact").text(establishmentContact);
@@ -466,8 +471,8 @@ function saveCuisine() {
     $(".rando").hide(); //
     $("#genre-question").hide(); //
     $(".dropdown-genres").hide(); //
-    $(".final-date").removeClass("hide");
-    $(".movie").show();
+    $(".body-container").prepend($(".final-date").removeClass("hide"));
+    $(".movie").show();  
     $(".movie-display").show();
     $(".buttons").remove();
     $(".final-save").hide();
@@ -476,6 +481,15 @@ function saveCuisine() {
   });
 }
 saveCuisine();
+
+
+  // $(".savedDate" + i).append($("<div>").text("For Rent"))
+  // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -8]).text(movieStorage[i][movieStorage[i].length -7]).addClass("yam"))
+  // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -6]).text(movieStorage[i][movieStorage[i].length -5]).addClass("tech"))
+  // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -4]).text(movieStorage[i][movieStorage[i].length -3]).addClass("tix"))
+  // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -2]).text(movieStorage[i][movieStorage[i].length -1]).addClass("tox"))
+  
+  
 
 for (var i = restaurantStorage.length - 1; i >= 0; i--) {
   var savedCard = $("<div>")
@@ -502,7 +516,29 @@ for (var i = restaurantStorage.length - 1; i >= 0; i--) {
   savedCard.append($("<div>").text(restaurantStorage[i][7]).addClass("number"));
   savedDiv.prepend(savedCard);
   savedContainer.prepend(savedDiv);
+  
 }
+
+
+for ( var i = movieStorage.length -1 ; i >= 0; i--){
+  
+    if (movieStorage[i].length > 1 ){          //////////////////////////////////////added to prevent error.....if creates error okay to remove..........
+    var savedMovie = $("<div>")
+    .addClass("savedDate" + i)
+  // savedCard.css("display", "flex");
+  // savedCard.css("justify-content", "center");
+  savedMovie.append($("<img>").attr("height", "200vw").attr("src", "https://image.tmdb.org/t/p/w500" + movieStorage[i][0]).addClass("poster"))
+  savedMovie.append($("<div>").text(movieStorage[i][1]).addClass("title"));
+  savedMovie.append($("<div>").text(movieStorage[i][2]).addClass("synops"));
+  savedMovie.append($("<div>").text(movieStorage[i][3]).addClass("rating"));
+  // savedCard.append(savedMovie)
+  savedDiv.prepend(savedMovie)
+  // savedContainer.prepend(savedDiv)
+}
+}
+
+
+
 
 //////////////////// CLEAR BUTTON FUNCTION SAVED.HTML //////////////////
 function clearHistory() {
@@ -512,8 +548,3 @@ function clearHistory() {
   });
 }
 clearHistory();
-// $(".gitSum").append($("<div>").addClass("col s4 card"))
-// for ( var i = 0; i < restaurantStorage.length; i++){
-//  $(".card").append($("<div>").text(restaurantStorage[i]))
-// ($("<div>").addClass("col s4 card"))
-// }
