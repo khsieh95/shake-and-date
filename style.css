@@ -37,6 +37,10 @@ button {
 #restaurant-question {
   text-align: center;
 }
+
+.restaurant-yes-no {
+  text-align: center;
+}
 .row {
   text-align: center;
 }
