@@ -285,12 +285,16 @@ $(".city-search-btn").on("click", function (event) {
   }).then(function (city) {
     for (var i = 0; i < city.location_suggestions.length; i++) {
       $(".city-option").append(
-        $("<li>")
+        $("<li>").append(
+          $("<a>").append(
+            $("<li>")
           .attr("href", "#!")
           .text(city.location_suggestions[i].name)
-          .css("color", "#039be5")
+          .css("color", "#26a69a")
           .addClass("cityOptions")
           .val(city.location_suggestions[i].id)
+          )
+          )
       );
     }
     $(".cityOptions").on("click", function (event) {
@@ -430,7 +434,6 @@ function lucky() {
           response.restaurants[randomeRestaurant].restaurant.featured_image;
         $(".restaurant-featuredimage").attr("src", establishmentImg);
         $(".restaurant-featuredimage").attr("height", "200vw");
-        $(".restaurant-featuredimage").attr("margin", "0vw");
         var establishmentContact =
           response.restaurants[randomeRestaurant].restaurant.phone_numbers;
         $(".restaurant-contact").text(establishmentContact);

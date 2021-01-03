@@ -95,3 +95,14 @@ button {
 .number {
   padding-bottom: 2%;
 }
+.restaurant-featuredimage{
+  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  
+}
+.restaurant-featuredimage[src=""] {
+  display:none;
+}
