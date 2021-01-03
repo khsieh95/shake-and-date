@@ -22,6 +22,9 @@ var restaurantStorage = JSON.parse(localStorage.getItem("Restaurants")) || [];
 console.log(movieStorage);
 console.log(restaurantStorage);
 
+var movieArray = []
+var restArray  = []
+
 ///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
 function clear() {
   $(".movie-title").empty();
@@ -164,6 +167,7 @@ function streem(x) {
     url: streemLocation,
     method: "GET",
   }).then(function (streeming) {
+    movieArray = []
     console.log(streeming);
     var poster = streeming.poster_path; // For poster
     var title = streeming.title; //For title
@@ -176,8 +180,8 @@ function streem(x) {
     $("img").attr("height", "320vw");
     $(".movie-synopsis").append(synops);
     $(".movie-rating").append(voterRate);
-    var movieArray = [poster, title, synops, voterRate];
-    movieStorage.push(movieArray);
+    movieArray.push(poster, title, synops, voterRate);
+    
     /////////////////////Streeming And Rental Results/////////////////////////////////
     var subscription = streeming["watch/providers"].results.US.flatrate;
     try {
@@ -247,6 +251,7 @@ function streem(x) {
     } catch (erro) {
       $(".movie-rent").append($("<div>").text("No known rental service."));
     }
+    saveMovie();
     // localStorage.setItem("movies", movieStorage)
   });
 }
@@ -266,6 +271,7 @@ function streem(x) {
 // })
 
 // Restaurant Code Here
+
 
 $(".city-search-btn").on("click", function (event) {
   $(".city-search-btn").hide();
@@ -298,6 +304,8 @@ $(".city-search-btn").on("click", function (event) {
       );
     }
     $(".cityOptions").on("click", function (event) {
+      
+      
       // $(".body-container").prepend($(".restaurants").show());
       // $(".location").hide();
       var cityId = $(event.target).val();
@@ -307,6 +315,8 @@ $(".city-search-btn").on("click", function (event) {
 
       lucky();
       $(".food-option").on("click", function (event) {
+        restArray  = []
+        
         $(".restaurant-display").removeClass("hide");
         $(".cuisineSelector").text($(event.target).text());
         var cuisineid = $(event.target).attr("data-foodid");
@@ -363,7 +373,7 @@ $(".city-search-btn").on("click", function (event) {
             $(".restaurant-name").text("No Restaurants Found!");
           }
           ////////////////////////////////////////Pushing array into globaly defined array and localStorage//////////////////////////////////////////////////
-          var restArray = [
+          restArray.push(
             astablishmentName,
             establishmentCuisine,
             establishmentCity,
@@ -372,8 +382,8 @@ $(".city-search-btn").on("click", function (event) {
             establishmentMenu,
             establishmentImg,
             establishmentContact,
-          ];
-          restaurantStorage.push(restArray);
+        );
+            saveCuisine();
 
           saveCuisineButton.removeClass("hide");
         });
@@ -388,6 +398,7 @@ function lucky() {
   var cityId = $(event.target).val();
   console.log(cityId);
   $(".restaurant-random").on("click", function () {
+    restArray  = []
     var randomCuisineid = Math.floor(Math.random() * 8);
     var cuisine = randomCuisine[randomCuisineid];
     $(".restaurant-display").removeClass("hide");
@@ -440,7 +451,7 @@ function lucky() {
       } catch (err) {
         $(".restaurant-name").text("No Restaurants Found!");
       }
-      var restArray = [
+      restArray.push(
         astablishmentName,
         establishmentCuisine,
         establishmentCity,
@@ -449,8 +460,9 @@ function lucky() {
         establishmentMenu,
         establishmentImg,
         establishmentContact,
-      ];
-      restaurantStorage.push(restArray);
+      );
+      saveCuisine() 
+      
     });
     saveCuisineButton.removeClass("hide").prepend($("<br>"));
   });
@@ -458,20 +470,23 @@ function lucky() {
 
 ////////////////// SAVE BUTTON FUNCTIONS.....WILL USE FOR LOCAL STORAGE////////////////////////
 function saveMovie() {
-  saveMovieButton.on("click", function () {
+  saveMovieButton.on("click", function (event) {
+    event.stopImmediatePropagation()
     saveMovieButton.hide();
     movieSaveRow.hide();
     $(".movie").hide();
     $(".movie-display").hide();
     $(".body-container").append($(".location").show());
+    movieStorage.push(movieArray)
   });
 }
-saveMovie();
+
 
 function saveCuisine() {
   $(".location").append(saveCuisineButton); ////////
   saveCuisineButton.css("margine-left", "50%"); ////
-  saveCuisineButton.on("click", function () {
+  saveCuisineButton.on("click", function (event) {
+    event.stopImmediatePropagation()
     saveCuisineButton.hide();
     // $(".location").hide();
     $(".rando").hide(); //
@@ -482,11 +497,12 @@ function saveCuisine() {
     $(".movie-display").show();
     $(".buttons").remove();
     $(".final-save").hide();
+    restaurantStorage.push(restArray)
     localStorage.setItem("movies", JSON.stringify(movieStorage));
     localStorage.setItem("Restaurants", JSON.stringify(restaurantStorage));
   });
 }
-saveCuisine();
+
 
 // $(".savedDate" + i).append($("<div>").text("For Rent"))
 // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -8]).text(movieStorage[i][movieStorage[i].length -7]).addClass("yam"))
