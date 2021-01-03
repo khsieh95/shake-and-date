@@ -22,8 +22,10 @@ var restaurantDrop = $(".restaurantDrop");
 var movieStorage = JSON.parse(localStorage.getItem("movies")) || [];
 var restaurantStorage = JSON.parse(localStorage.getItem("Restaurants")) || [];
 
+
 var movieArray = []
 var restArray  = []
+
 
 ///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
 function clear() {
@@ -493,8 +495,10 @@ function saveMovie() {
     movieSaveRow.hide();
     $(".movie").hide();
     $(".movie-display").hide();
+
     $(".body-container").append($(".location").show());
     movieStorage.push(movieArray)
+
     // $(".body-container").append($(".location").show());
     restaurantOption.removeClass("hide");
   });
