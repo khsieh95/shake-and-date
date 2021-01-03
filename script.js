@@ -16,11 +16,11 @@ var movieSaveRow = $(".movie-save-row");
 var clearButton = $(".clear-history-button");
 var savedContainer = $(".final-container");
 var savedDiv = $(".saved-div");
+var restaurantOption = $(".restaurant-yes-no");
+var restaurantDrop = $(".restaurantDrop");
 
 var movieStorage = JSON.parse(localStorage.getItem("movies")) || [];
 var restaurantStorage = JSON.parse(localStorage.getItem("Restaurants")) || [];
-console.log(movieStorage);
-console.log(restaurantStorage);
 
 ///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
 function clear() {
@@ -83,12 +83,29 @@ function displayControl() {
     if ($(event.target).attr("class") === "no") {
       $(".movie").hide();
       $(".movie-display").hide();
-      $(".body-container").prepend($(".location").show());
+      // $(".body-container").prepend($(".location").show());
+      restaurantOption.removeClass("hide");
       movieStorage.push(" ");
     }
   });
 }
 displayControl();
+
+function displayRestaurant() {
+  restaurantDrop.on("click", function (event) {
+    if ($(event.target).attr("class") === "yes") {
+      console.log("hi");
+      $(".body-container").prepend($(".location").show());
+      restaurantOption.hide();
+    }
+    if ($(event.target).attr("class") === "no") {
+      $(".final-date").removeClass("hide");
+      restaurantOption.hide();
+      $(".movie-display").show();
+    }
+  });
+}
+displayRestaurant();
 
 /////////////////////EVENT LISTENER SELECTS RANDOM GENRE AND PLUGS IT INTO STREEM FUNCTION////////////////////////////
 $(".rando").on("click", function () {
@@ -371,7 +388,7 @@ $(".city-search-btn").on("click", function (event) {
           ];
           restaurantStorage.push(restArray);
 
-          saveCuisineButton.removeClass("hide");
+          saveCuisineButton.removeClass("hide").prepend($("<br>"));
         });
       });
     });
@@ -460,7 +477,8 @@ function saveMovie() {
     movieSaveRow.hide();
     $(".movie").hide();
     $(".movie-display").hide();
-    $(".body-container").append($(".location").show());
+    // $(".body-container").append($(".location").show());
+    restaurantOption.removeClass("hide");
   });
 }
 saveMovie();
@@ -475,7 +493,8 @@ function saveCuisine() {
     $("#genre-question").hide(); //
     $(".dropdown-genres").hide(); //
     $(".body-container").prepend($(".final-date").removeClass("hide"));
-    $(".movie").show();
+    $(".final-date").append($(".movie-display"));
+    // $(".movie").show();
     $(".movie-display").show();
     $(".buttons").remove();
     $(".final-save").hide();
@@ -582,6 +601,7 @@ for (var i = restaurantStorage.length - 1; i >= 0; i--) {
 //////////////////// CLEAR BUTTON FUNCTION SAVED.HTML //////////////////
 function clearHistory() {
   clearButton.on("click", function () {
+    console.log("hi");
     savedDiv.empty();
     localStorage.clear();
   });
