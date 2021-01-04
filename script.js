@@ -1,9 +1,4 @@
-// API Key: dc7d76692b192b772ecce4d938dfa475 for tmdb
 $(".dropdown-trigger").dropdown();
-// navigator.geolocation.getCurrentPosition(function(position){
-//   console.log(position.coords.latitude)
-//   console.log(position.coords.longitude)
-// })
 $(".restaurants").hide();
 $(".location").hide();
 
@@ -18,6 +13,7 @@ var savedContainer = $(".final-container");
 var savedDiv = $(".saved-div");
 var restaurantOption = $(".restaurant-yes-no");
 var restaurantDrop = $(".restaurantDrop");
+var viewDate = $(".selected-date-here");
 
 var movieStorage = JSON.parse(localStorage.getItem("movies")) || [];
 var restaurantStorage = JSON.parse(localStorage.getItem("Restaurants")) || [];
@@ -105,6 +101,7 @@ function displayRestaurant() {
     if ($(event.target).attr("class") === "no") {
       $(".final-date").removeClass("hide");
       restaurantOption.hide();
+      viewDate.append($(".movie-display"));
       $(".movie-display").show();
       restaurantStorage.push("")
       localStorage.setItem("Restaurants", JSON.stringify(restaurantStorage))
@@ -516,7 +513,8 @@ function saveCuisine() {
     $("#genre-question").hide(); //
     $(".dropdown-genres").hide(); //
     $(".body-container").prepend($(".final-date").removeClass("hide"));
-    $(".final-date").append($(".movie-display"));
+    viewDate.append($(".movie-display"));
+    viewDate.append($(".restaurant-display"));
     // $(".movie").show();
     $(".movie-display").show();
     $(".buttons").remove();

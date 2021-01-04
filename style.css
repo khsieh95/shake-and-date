@@ -1,12 +1,13 @@
 body {
-  /* background-color: lightblue; */
   font-family: "Playfair Display", serif;
   background-image: linear-gradient(black, white);
+  min-height: 100vh;
 }
+
 button {
   font-family: "Playfair Display", serif;
 }
-/* Movie container */
+
 .container {
   background-color: white;
   margin: 0 auto;
@@ -14,7 +15,9 @@ button {
   border-radius: 25px;
   margin-bottom: 2%;
   margin-top: 2%;
+  box-shadow: 10px 10px 8px #888888;
 }
+
 .header-name {
   font-size: 30px;
   font-weight: bold;
@@ -109,4 +112,14 @@ button {
 }
 .restaurant-featuredimage[src=""] {
   display:none;
+}
+
+.card {
+  box-shadow: 8px 8px 8px #888888;
+}
+
+.style-button {
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
 }
