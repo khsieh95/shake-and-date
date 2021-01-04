@@ -328,6 +328,8 @@ $(".city-search-btn").on("click", function (event) {
       console.log(cityId);
       console.log(city);
       $(".search-city").val($(event.target).text());
+      $(".city-drop").hide()
+      
 ////////FUNCTION ACTS AS GOOGLE LUCKY BUTTON.....GENERATES RANDOME CUISINE///////
       lucky();
 ////////BELLOW CLICK EVENTS DISPLAY SELECTED MEAL LOCATIONS///////////

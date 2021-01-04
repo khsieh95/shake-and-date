@@ -123,3 +123,6 @@ button {
   display: flex;
   justify-content: center;
 }
+.search-city{
+  text-align: center;
+}
