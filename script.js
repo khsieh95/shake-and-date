@@ -38,6 +38,8 @@ function cityIdSnatcher() {
   });
 }
 
+/////////////// OBJECTS FOR GATHERING STREEMING INFORMATION IF OBJECT KEY:VALLUE MATCHES////////////////
+
 var objectStreem = {
   "HBO Max": "https://www.hbomax.com/",
   "HBO Now": "https://play.hbonow.com/page/urn:hbo:page:home",
@@ -70,7 +72,8 @@ var objectRent = {
   DIRECTV: "https://www.directv.com/",
   "AMC on Demand": "https://www.amctheatres.com/on-demand",
 };
-//////////////////// DISPLAYCONTROL PRODUCES ELEMENTS TO THE SCREEN IF CLASS === YES//////////////////
+
+////////////////////CONTROLS WHAT HAPPENS WHEN MOVIE BUTTON IS HIT YES OR NO////////////////////////
 function displayControl() {
   $(".movieDrop").on("click", function (event) {
     if ($(event.target).attr("class") === "yes") {
@@ -90,6 +93,7 @@ function displayControl() {
   });
 }
 displayControl();
+////////////////////CONTROLS WHAT HAPPENS WHEN RESTAURANT BUTTON IS HIT YES OR NO////////////////////////
 
 function displayRestaurant() {
   restaurantDrop.on("click", function (event) {
@@ -199,7 +203,7 @@ function streem(x) {
     $(".movie-rating").append(voterRate);
     movieArray.push(poster, title, synops, voterRate);
     
-    /////////////////////Streeming And Rental Results/////////////////////////////////
+    /////////////////////Streeming And Rental Results USING API AND ABOVE LISTED OBJECTS/////////////////////////////////
     var subscription = streeming["watch/providers"].results.US.flatrate;
     try {
       for (var i = 0; i < subscription.length; i++) {
@@ -269,7 +273,6 @@ function streem(x) {
       $(".movie-rent").append($("<div>").text("No known rental service."));
     }
     saveMovie();
-    // localStorage.setItem("movies", movieStorage)
   });
 }
 
@@ -287,9 +290,9 @@ function streem(x) {
 
 // })
 
-// Restaurant Code Here
+///////////////// Restaurant Code Here/////////////
 
-
+/////CITY INPUT FIELD AND SELECTOR////////
 $(".city-search-btn").on("click", function (event) {
   $(".city-search-btn").hide();
   $(".city-drop").show();
@@ -304,7 +307,6 @@ $(".city-search-btn").on("click", function (event) {
       "user-key": "b23ce13853bea993b459518ec134302f",
       "content-type": "application/json",
     },
-    //<li><a href="#!" data-foodid="1">American</a></li>
   }).then(function (city) {
     for (var i = 0; i < city.location_suggestions.length; i++) {
       $(".city-option").append(
@@ -320,17 +322,15 @@ $(".city-search-btn").on("click", function (event) {
           )
       );
     }
+    /////////SPECIFIC CITY SELECTOR//////////////
     $(".cityOptions").on("click", function (event) {
-      
-      
-      // $(".body-container").prepend($(".restaurants").show());
-      // $(".location").hide();
       var cityId = $(event.target).val();
       console.log(cityId);
       console.log(city);
       $(".search-city").val($(event.target).text());
-
+////////FUNCTION ACTS AS GOOGLE LUCKY BUTTON.....GENERATES RANDOME CUISINE///////
       lucky();
+////////BELLOW CLICK EVENTS DISPLAY SELECTED MEAL LOCATIONS///////////
       $(".food-option").on("click", function (event) {
         restArray  = []
         
@@ -343,7 +343,7 @@ $(".city-search-btn").on("click", function (event) {
           "&entity_type=city&count=20&radius=20%2C000&cuisines=" +
           cuisineid +
           "&sort=rating&order=desc";
-        console.log(cuisineurl); //maybe bubble affect? why does it run again? needs looking into
+        console.log(cuisineurl); 
 
         $.ajax({
           method: "GET",
@@ -408,7 +408,7 @@ $(".city-search-btn").on("click", function (event) {
     });
   });
 });
-
+/////////////FUNCTION MENTIONED ON LINE 331/////////////
 var randomCuisine = ["1", "25", "156", "55", "60", "67", "73", "99", "308"];
 
 function lucky() {
@@ -493,9 +493,7 @@ function saveMovie() {
     movieSaveRow.hide();
     $(".movie").hide();
     $(".movie-display").hide();
-    // $(".body-container").append($(".location").show());
     movieStorage.push(movieArray)
-    // $(".body-container").append($(".location").show());
     localStorage.setItem("movies", JSON.stringify(movieStorage))
     restaurantOption.removeClass("hide");
   });
@@ -503,34 +501,25 @@ function saveMovie() {
 
 
 function saveCuisine() {
-  $(".location").append(saveCuisineButton); ////////
-  saveCuisineButton.css("margine-left", "50%"); ////
+  $(".location").append(saveCuisineButton); 
+  saveCuisineButton.css("margine-left", "50%"); 
   saveCuisineButton.on("click", function (event) {
     event.stopImmediatePropagation()
     saveCuisineButton.hide();
-    // $(".location").hide();
-    $(".rando").hide(); //
-    $("#genre-question").hide(); //
-    $(".dropdown-genres").hide(); //
+    $(".rando").hide(); 
+    $("#genre-question").hide(); 
+    $(".dropdown-genres").hide(); 
     $(".body-container").prepend($(".final-date").removeClass("hide"));
     viewDate.append($(".movie-display"));
     viewDate.append($(".restaurant-display"));
-    // $(".movie").show();
     $(".movie-display").show();
     $(".buttons").remove();
     $(".final-save").hide();
     restaurantStorage.push(restArray)
-    // localStorage.setItem("movies", JSON.stringify(movieStorage));
     localStorage.setItem("Restaurants", JSON.stringify(restaurantStorage));
   });
 }
-
-// $(".savedDate" + i).append($("<div>").text("For Rent"))
-// $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -8]).text(movieStorage[i][movieStorage[i].length -7]).addClass("yam"))
-// $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -6]).text(movieStorage[i][movieStorage[i].length -5]).addClass("tech"))
-// $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -4]).text(movieStorage[i][movieStorage[i].length -3]).addClass("tix"))
-// $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -2]).text(movieStorage[i][movieStorage[i].length -1]).addClass("tox"))
-
+//////////FOR LOOP RUNS THROUGH LOCAL STORAGE AND DISPLAYS ON FINAL HTML PAGE///////////////////
 for (var i = restaurantStorage.length - 1; i >= 0; i--) {
   
   var savedCard = $("<div>")
@@ -571,7 +560,6 @@ for (var i = restaurantStorage.length - 1; i >= 0; i--) {
       .attr("href", restaurantStorage[i][5])
       .attr("target", "_blank")
   );}
-  // savedCard.append($("<img>").attr("src", restaurantStorage[i][6]).addClass("image"))
   if (restaurantStorage[i][7] === undefined){
   }else{savedCard.append(
     $("<p>").text(restaurantStorage[i][7]).addClass("number card-display")
@@ -601,34 +589,11 @@ for (var i = restaurantStorage.length - 1; i >= 0; i--) {
       .addClass("synops card-display")
       .append($("<hr>"))
   );}
-  // savedMovie.append(
-  //   $("<p>")
-  //     .text("Rating: " + movieStorage[i][3])
-  //     .addClass("rating")
-  // );
+  
   savedCard.prepend(savedMovie);
-  // savedDiv.prepend(savedMovie)
-  // savedContainer.prepend(savedDiv)
   savedDiv.prepend(savedCard);
   savedContainer.prepend(savedDiv);
 }
-
-// for ( var i = movieStorage.length -1 ; i >= 0; i--){
-
-//     if (movieStorage[i].length > 1 ){          //////////////////////////////////////added to prevent error.....if creates error okay to remove..........
-//     var savedMovie = $("<div>")
-//     .addClass("savedDate" + i)
-//   // savedCard.css("display", "flex");
-//   // savedCard.css("justify-content", "center");
-//   savedMovie.append($("<img>").attr("height", "200vw").attr("src", "https://image.tmdb.org/t/p/w500" + movieStorage[i][0]).addClass("poster"))
-//   savedMovie.append($("<div>").text(movieStorage[i][1]).addClass("title"));
-//   savedMovie.append($("<div>").text(movieStorage[i][2]).addClass("synops"));
-//   savedMovie.append($("<div>").text(movieStorage[i][3]).addClass("rating"));
-//   // savedCard.append(savedMovie)
-//   savedDiv.prepend(savedMovie)
-//   // savedContainer.prepend(savedDiv)
-// }
-// }
 
 //////////////////// CLEAR BUTTON FUNCTION SAVED.HTML //////////////////
 function clearHistory() {
