@@ -291,6 +291,7 @@ function streem(x) {
 
 
 $(".city-search-btn").on("click", function (event) {
+
   $(".city-search-btn").hide();
   $(".city-drop").show();
   var searchedCity = $(".search-city").val();
@@ -328,7 +329,11 @@ $(".city-search-btn").on("click", function (event) {
       var cityId = $(event.target).val();
       console.log(cityId);
       console.log(city);
+
       $(".search-city").val($(event.target).text());
+      $(".search-city").css("text-align", "center")
+      $(".city-drop").hide()
+      
 
       lucky();
       $(".food-option").on("click", function (event) {
