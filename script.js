@@ -22,6 +22,9 @@ var restaurantDrop = $(".restaurantDrop");
 var movieStorage = JSON.parse(localStorage.getItem("movies")) || [];
 var restaurantStorage = JSON.parse(localStorage.getItem("Restaurants")) || [];
 
+var movieArray = []
+var restArray  = []
+
 ///////////CLEAR FUNCTION USED TO EMPTY ELEMENTS BEFORE PRODUCING NEW CONTENT. CALLED RIGHT AFTER EVENTLISTENER///////////////////
 function clear() {
   $(".movie-title").empty();
@@ -86,6 +89,7 @@ function displayControl() {
       // $(".body-container").prepend($(".location").show());
       restaurantOption.removeClass("hide");
       movieStorage.push(" ");
+      localStorage.setItem("movies", JSON.stringify(movieStorage))
     }
   });
 }
@@ -102,6 +106,8 @@ function displayRestaurant() {
       $(".final-date").removeClass("hide");
       restaurantOption.hide();
       $(".movie-display").show();
+      restaurantStorage.push("")
+      localStorage.setItem("Restaurants", JSON.stringify(restaurantStorage))
     }
   });
 }
@@ -181,6 +187,7 @@ function streem(x) {
     url: streemLocation,
     method: "GET",
   }).then(function (streeming) {
+    movieArray = []
     console.log(streeming);
     var poster = streeming.poster_path; // For poster
     var title = streeming.title; //For title
@@ -193,8 +200,8 @@ function streem(x) {
     $("img").attr("height", "320vw");
     $(".movie-synopsis").append(synops);
     $(".movie-rating").append(voterRate);
-    var movieArray = [poster, title, synops, voterRate];
-    movieStorage.push(movieArray);
+    movieArray.push(poster, title, synops, voterRate);
+    
     /////////////////////Streeming And Rental Results/////////////////////////////////
     var subscription = streeming["watch/providers"].results.US.flatrate;
     try {
@@ -264,6 +271,7 @@ function streem(x) {
     } catch (erro) {
       $(".movie-rent").append($("<div>").text("No known rental service."));
     }
+    saveMovie();
     // localStorage.setItem("movies", movieStorage)
   });
 }
@@ -284,6 +292,7 @@ function streem(x) {
 
 // Restaurant Code Here
 
+
 $(".city-search-btn").on("click", function (event) {
   $(".city-search-btn").hide();
   $(".city-drop").show();
@@ -302,15 +311,21 @@ $(".city-search-btn").on("click", function (event) {
   }).then(function (city) {
     for (var i = 0; i < city.location_suggestions.length; i++) {
       $(".city-option").append(
-        $("<li>")
+        $("<li>").append(
+          $("<a>").append(
+            $("<li>")
           .attr("href", "#!")
           .text(city.location_suggestions[i].name)
-          .css("color", "#039be5")
+          .css("color", "#26a69a")
           .addClass("cityOptions")
           .val(city.location_suggestions[i].id)
+          )
+          )
       );
     }
     $(".cityOptions").on("click", function (event) {
+      
+      
       // $(".body-container").prepend($(".restaurants").show());
       // $(".location").hide();
       var cityId = $(event.target).val();
@@ -320,6 +335,8 @@ $(".city-search-btn").on("click", function (event) {
 
       lucky();
       $(".food-option").on("click", function (event) {
+        restArray  = []
+        
         $(".restaurant-display").removeClass("hide");
         $(".cuisineSelector").text($(event.target).text());
         var cuisineid = $(event.target).attr("data-foodid");
@@ -376,7 +393,7 @@ $(".city-search-btn").on("click", function (event) {
             $(".restaurant-name").text("No Restaurants Found!");
           }
           ////////////////////////////////////////Pushing array into globaly defined array and localStorage//////////////////////////////////////////////////
-          var restArray = [
+          restArray.push(
             astablishmentName,
             establishmentCuisine,
             establishmentCity,
@@ -385,8 +402,8 @@ $(".city-search-btn").on("click", function (event) {
             establishmentMenu,
             establishmentImg,
             establishmentContact,
-          ];
-          restaurantStorage.push(restArray);
+        );
+            saveCuisine();
 
           saveCuisineButton.removeClass("hide").prepend($("<br>"));
         });
@@ -401,6 +418,7 @@ function lucky() {
   var cityId = $(event.target).val();
   console.log(cityId);
   $(".restaurant-random").on("click", function () {
+    restArray  = []
     var randomCuisineid = Math.floor(Math.random() * 8);
     var cuisine = randomCuisine[randomCuisineid];
     $(".restaurant-display").removeClass("hide");
@@ -447,14 +465,13 @@ function lucky() {
           response.restaurants[randomeRestaurant].restaurant.featured_image;
         $(".restaurant-featuredimage").attr("src", establishmentImg);
         $(".restaurant-featuredimage").attr("height", "200vw");
-        $(".restaurant-featuredimage").attr("margin", "0vw");
         var establishmentContact =
           response.restaurants[randomeRestaurant].restaurant.phone_numbers;
         $(".restaurant-contact").text(establishmentContact);
       } catch (err) {
         $(".restaurant-name").text("No Restaurants Found!");
       }
-      var restArray = [
+      restArray.push(
         astablishmentName,
         establishmentCuisine,
         establishmentCity,
@@ -463,8 +480,9 @@ function lucky() {
         establishmentMenu,
         establishmentImg,
         establishmentContact,
-      ];
-      restaurantStorage.push(restArray);
+      );
+      saveCuisine() 
+      
     });
     saveCuisineButton.removeClass("hide").prepend($("<br>"));
   });
@@ -472,21 +490,26 @@ function lucky() {
 
 ////////////////// SAVE BUTTON FUNCTIONS.....WILL USE FOR LOCAL STORAGE////////////////////////
 function saveMovie() {
-  saveMovieButton.on("click", function () {
+  saveMovieButton.on("click", function (event) {
+    event.stopImmediatePropagation()
     saveMovieButton.hide();
     movieSaveRow.hide();
     $(".movie").hide();
     $(".movie-display").hide();
     // $(".body-container").append($(".location").show());
+    movieStorage.push(movieArray)
+    // $(".body-container").append($(".location").show());
+    localStorage.setItem("movies", JSON.stringify(movieStorage))
     restaurantOption.removeClass("hide");
   });
 }
-saveMovie();
+
 
 function saveCuisine() {
   $(".location").append(saveCuisineButton); ////////
   saveCuisineButton.css("margine-left", "50%"); ////
-  saveCuisineButton.on("click", function () {
+  saveCuisineButton.on("click", function (event) {
+    event.stopImmediatePropagation()
     saveCuisineButton.hide();
     // $(".location").hide();
     $(".rando").hide(); //
@@ -498,11 +521,11 @@ function saveCuisine() {
     $(".movie-display").show();
     $(".buttons").remove();
     $(".final-save").hide();
-    localStorage.setItem("movies", JSON.stringify(movieStorage));
+    restaurantStorage.push(restArray)
+    // localStorage.setItem("movies", JSON.stringify(movieStorage));
     localStorage.setItem("Restaurants", JSON.stringify(restaurantStorage));
   });
 }
-saveCuisine();
 
 // $(".savedDate" + i).append($("<div>").text("For Rent"))
 // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -8]).text(movieStorage[i][movieStorage[i].length -7]).addClass("yam"))
@@ -511,64 +534,75 @@ saveCuisine();
 // $(".savedDate" + i).append($("<a>").attr(movieStorage[i][movieStorage[i].length -2]).text(movieStorage[i][movieStorage[i].length -1]).addClass("tox"))
 
 for (var i = restaurantStorage.length - 1; i >= 0; i--) {
+  
   var savedCard = $("<div>")
     .addClass("card")
     .addClass("savedDate" + i);
   console.log(restaurantStorage[i]);
-  savedCard.append(
-    $("<p>")
+
+  if (restaurantStorage[i][0] === undefined){
+    
+  }else{savedCard.append(
+      $("<p>")
       .text("Name: " + restaurantStorage[i][0])
       .addClass("name card-display")
-  );
-  savedCard.append(
-    $("<p>")
+  );}
+  if (restaurantStorage[i][1] === undefined){
+  }else{savedCard.append(
+      $("<p>")
       .text("Cuisine: " + restaurantStorage[i][1])
       .addClass("type card-display")
-  );
-  // savedCard.append(
-  //   $("<p>")
-  //     .text("City: " + restaurantStorage[i][2])
-  //     .addClass("city")
-  // );
-  savedCard.append(
-    $("<p>")
+  );}
+  if (restaurantStorage[i][3] === undefined){
+  }else{savedCard.append(
+      $("<p>")
       .text("Address: " + restaurantStorage[i][3])
       .addClass("address card-display")
-  );
-  savedCard.append(
-    $("<p>")
+  );}
+  if (restaurantStorage[i][4] === undefined){
+  }else{savedCard.append(
+      $("<p>")
       .text("Rating: " + restaurantStorage[i][4])
       .addClass("rating card-display")
-  );
-  savedCard.append(
+  );}
+  if (restaurantStorage[i][5] === undefined){
+  }else{savedCard.append(
     $("<a>")
       .text("View Menu")
       .addClass("menu card-display")
       .attr("href", restaurantStorage[i][5])
       .attr("target", "_blank")
-  );
+  );}
   // savedCard.append($("<img>").attr("src", restaurantStorage[i][6]).addClass("image"))
-  savedCard.append(
+  if (restaurantStorage[i][7] === undefined){
+  }else{savedCard.append(
     $("<p>").text(restaurantStorage[i][7]).addClass("number card-display")
-  );
+  );}
+
   var savedMovie = $("<div>").addClass("savedDate" + i);
+    if(movieStorage[i][0] !== " "){
   savedMovie.append(
     $("<img>")
       .attr("height", "200vw")
       .attr("src", "https://image.tmdb.org/t/p/w500" + movieStorage[i][0])
       .addClass("poster card-display")
-  );
+  );}else{console.log("no Image")
+  }
+  if (movieStorage[i][1] === undefined){
+  }else{
   savedMovie.append(
     $("<p>")
       .text("Title: " + movieStorage[i][1])
       .addClass("title card-display")
-  );
+  );}
+  if (movieStorage[i][2] === undefined){
+  }else{
   savedMovie.append(
     $("<p>")
       .text("Synopsis: " + movieStorage[i][2])
       .addClass("synops card-display")
       .append($("<hr>"))
-  );
+  );}
   // savedMovie.append(
   //   $("<p>")
   //     .text("Rating: " + movieStorage[i][3])
