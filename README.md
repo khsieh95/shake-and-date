@@ -1,6 +1,9 @@
 # shake-and-date
 
-<img width="1440" alt="Screen Shot 2021-01-04 at 4 08 56 PM" src="https://user-images.githubusercontent.com/74025123/103579954-264f8400-4e8e-11eb-91d7-90470546696b.png">
+<img width="720" alt="Screen Shot 2021-01-04 at 4 08 56 PM" src="https://user-images.githubusercontent.com/74025123/103579954-264f8400-4e8e-11eb-91d7-90470546696b.png">
+<img width="720" alt="Screen Shot 2021-01-07 at 6 46 20 PM" src="https://user-images.githubusercontent.com/74025123/103957633-00311a80-5100-11eb-959e-82c5123b057c.png">
+<img width="720" alt="Screen Shot 2021-01-07 at 6 47 05 PM" src="https://user-images.githubusercontent.com/74025123/103957642-04f5ce80-5100-11eb-9404-28f4dbc0dfd1.png">
+
 
 [Deployment Link](https://khsieh95.github.io/shake-and-date/)
 
